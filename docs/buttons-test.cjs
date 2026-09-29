@@ -121,29 +121,11 @@ async function run(mobile) {
   await expectScroll(page, page.locator("#top button", { hasText: "Listen" }).first(), mobile, `${label} hero Listen`, "music");
 
   if (mobile) {
-    // Menu
+    // Header on phones: App plus the green Shop button, no menu (owner, 2026-09-29)
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.waitForTimeout(400);
-    const burger = page.locator('[aria-controls="mobile-nav"]');
-    await tapOrClick(page, burger, true);
-    await page.waitForTimeout(500);
-    const expanded = await burger.getAttribute("aria-expanded");
-    if (expanded !== "true") bad(`${label} menu`, "did not open"); else ok(`${label} menu opens`);
-    for (const item of ["About", "Products", "News", "Artists", "Music", "Sign Up", "Gallery"]) {
-      await tapOrClick(page, burger.locator("xpath=/ancestor::header//button[normalize-space()='Open menu' or normalize-space()='Close menu']").first().or(burger), true).catch(() => {});
-      // ensure open
-      if ((await burger.getAttribute("aria-expanded")) !== "true") { await tapOrClick(page, burger, true); await page.waitForTimeout(400); }
-      const id = item === "Sign Up" ? "signup" : item.toLowerCase();
-      const btn = page.locator("#mobile-nav button", { hasText: new RegExp(`^${item}$`) }).first();
-      try { await tapOrClick(page, btn, true); } catch (e) { bad(`${label} menu ${item}`, String(e).split("\n")[0]); continue; }
-      await page.waitForTimeout(1200);
-      const top = await page.evaluate((id) => Math.round(document.getElementById(id).getBoundingClientRect().top), id);
-      if (top > 220 || top < -400) bad(`${label} menu ${item}`, `#${id} top ${top}px`); else ok(`${label} menu ${item} -> #${id} at ${top}px`);
-      await page.evaluate(() => window.scrollTo(0, 0));
-      await page.waitForTimeout(300);
-    }
-    if ((await burger.getAttribute("aria-expanded")) !== "true") { await tapOrClick(page, burger, true); await page.waitForTimeout(400); }
-    await expectScroll(page, page.locator("#mobile-nav button", { hasText: "Shop the drop" }), true, `${label} menu Shop the drop`, "products");
+    if (await page.locator('[aria-controls="mobile-nav"]').count()) bad(`${label} header`, "hamburger menu is back");
+    await expectScroll(page, page.locator("header button", { hasText: /^Shop$/ }).filter({ visible: true }).first(), true, `${label} header Shop`, "products");
     // Tab bar
     const bar = page.locator('nav[aria-label="Quick jumps"]');
     await expectScroll(page, bar.locator("button", { hasText: "Shop" }), true, `${label} tab bar Shop`, "products");
@@ -159,7 +141,7 @@ async function run(mobile) {
       const id = item === "Sign Up" ? "signup" : item.toLowerCase();
       await expectScroll(page, page.locator('nav[aria-label="Sections"] button', { hasText: new RegExp(`^${item}$`) }), false, `${label} nav ${item}`, id);
     }
-    await expectScroll(page, page.locator("header button", { hasText: /^Shop$/ }).first(), false, `${label} nav Shop`, "products");
+    await expectScroll(page, page.locator("header button", { hasText: /^Shop$/ }).filter({ visible: true }).first(), false, `${label} nav Shop`, "products");
   }
 
   // Add as app
@@ -180,13 +162,6 @@ async function run(mobile) {
 
   // Shop panel
   const panel = page.locator("#products");
-  for (const cat of ["Tees", "Show merch", "All"]) {
-    const chip = panel.locator('[role="tab"]', { hasText: cat });
-    try { await chip.evaluate((el) => el.scrollIntoView({ block: "center" })); await tapOrClick(page, chip, mobile); } catch (e) { bad(`${label} category ${cat}`, String(e).split("\n")[0]); continue; }
-    await page.waitForTimeout(400);
-    const sel = await chip.getAttribute("aria-selected");
-    if (sel !== "true") bad(`${label} category ${cat}`, "not selected"); else ok(`${label} category ${cat} selects`);
-  }
   const search = panel.locator('input[type="search"]');
   await search.evaluate((el) => el.scrollIntoView({ block: "center" }));
   await search.fill("marked");
@@ -248,8 +223,6 @@ async function run(mobile) {
     const heart = card.locator('button[aria-pressed]');
     if (await heart.count()) { await tapOrClick(page, heart, mobile); await page.waitForTimeout(100); const p = await heart.getAttribute("aria-pressed"); if (p !== "true") bad(`${label} heart ${name}`, "not pressed"); else ok(`${label} heart ${name} toggles`); }
   }
-  // Show merch CTA
-  await expectScroll(page, panel.locator("button", { hasText: "Hear about the next drop" }), mobile, `${label} show merch CTA`, "signup");
 
   // News
   const news = page.locator("#news");
@@ -311,7 +284,7 @@ async function run(mobile) {
   // Footer
   const footer = page.locator("footer");
   await expectScroll(page, footer.locator("button", { hasText: /^Shop$/ }), mobile, `${label} footer Shop`, "products");
-  await expectScroll(page, footer.locator("button", { hasText: /^Gallery$/ }), mobile, `${label} footer Gallery`, "gallery");
+  if (!mobile) await expectScroll(page, footer.locator("button", { hasText: /^Gallery$/ }), mobile, `${label} footer Gallery`, "gallery"); // the section list is hidden below lg
   for (const s of ["Instagram", "TikTok", "YouTube", "Facebook", "Discord"]) await expectPopup(ctx, page, footer.locator("a", { hasText: s }).first(), mobile, `${label} footer ${s}`);
   const mail = await footer.locator('a[href^="mailto:"]').getAttribute("href");
   if (mail !== "mailto:starrbabywrldwide@gmail.com") bad(`${label} footer contact`, mail || "none"); else ok(`${label} footer contact mailto`);

@@ -36,7 +36,7 @@ export function Footer() {
             <p className="font-display mt-4 text-xs font-bold uppercase tracking-[0.24em] text-neon">{brand.tagline}</p>
           </div>
 
-          <nav className="md:col-span-3" aria-label="Footer sections">
+          <nav className="hidden lg:col-span-3 lg:block" aria-label="Footer sections">
             <p className="eyebrow !text-fg/45">Site</p>
             <ul className="mt-3 space-y-2">
               {nav.map((n) => (
@@ -49,7 +49,7 @@ export function Footer() {
             </ul>
           </nav>
 
-          <div className="md:col-span-4">
+          <div className="md:col-span-7 lg:col-span-4">
             <p className="eyebrow !text-fg/45">Follow</p>
             <ul className="mt-3 grid grid-cols-2 gap-2">
               {socials.map((s) => (

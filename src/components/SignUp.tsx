@@ -60,7 +60,7 @@ export function SignUp() {
                 width={800}
                 height={769}
                 loading="lazy"
-                className="pointer-events-none absolute -right-16 -top-16 w-72 rotate-12 opacity-[0.07] sm:w-96"
+                className="pointer-events-none absolute -right-16 -top-16 w-72 rotate-12 opacity-[0.3] sm:w-96"
               />
               <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
                 <div className="min-w-0 lg:col-span-6">

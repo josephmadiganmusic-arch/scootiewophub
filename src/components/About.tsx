@@ -86,20 +86,7 @@ export function About() {
               </blockquote>
             </Reveal>
 
-            {/* Milestones */}
-            <ol className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {about.milestones.map((m, i) => (
-                <Reveal key={m.title} index={i} as="li" className="min-w-0">
-                  <div className="neu-xs neu-lift h-full px-5 py-4">
-                    <p className="eyebrow !text-[0.7rem]">{m.year}</p>
-                    <p className="font-display mt-1 text-[0.8rem] font-bold uppercase leading-tight text-fg">{m.title}</p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-fg/72">{m.body}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </ol>
-
-            <Reveal index={2} className="mt-8">
+            <Reveal index={2} className="mt-10">
               <p className="eyebrow mb-3 !text-fg/50">Inspired by</p>
               <ul className="flex flex-wrap gap-2">
                 {about.influences.map((n) => (
