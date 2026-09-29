@@ -152,13 +152,30 @@ async function run(mobile) {
     await page.waitForTimeout(3000);
     const y = await page.evaluate(() => window.scrollY);
     if (y > 5) bad(`${label} tab bar Home`, `scrollY ${y}`); else ok(`${label} tab bar Home -> top`);
-    await expectPopup(ctx, page, bar.locator("a", { hasText: /Live/ }), true, `${label} tab bar Live`, "rolloutheaven.com");
+    await expectPopup(ctx, page, bar.locator('a[aria-label*="live" i]'), true, `${label} tab bar Live`, "rolloutheaven.com");
+    await expectScroll(page, bar.locator("button", { hasText: "Sign up" }), true, `${label} tab bar Sign up`, "signup");
   } else {
     for (const item of ["About", "Products", "News", "Artists", "Music", "Sign Up", "Gallery"]) {
       const id = item === "Sign Up" ? "signup" : item.toLowerCase();
       await expectScroll(page, page.locator('nav[aria-label="Sections"] button', { hasText: new RegExp(`^${item}$`) }), false, `${label} nav ${item}`, id);
     }
     await expectScroll(page, page.locator("header button", { hasText: /^Shop$/ }).first(), false, `${label} nav Shop`, "products");
+  }
+
+  // Add as app
+  {
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(400);
+    const btn = page.locator('header button[aria-label*="Add STARRBABY"]').filter({ visible: true }).first();
+    try { await tapOrClick(page, btn, mobile); } catch (e) { bad(`${label} Add as app`, String(e).split("\n")[0]); }
+    await page.waitForTimeout(500);
+    const dlg = page.locator('[role="dialog"][aria-labelledby="install-title"]');
+    if (!(await dlg.count())) bad(`${label} Add as app`, "steps dialog did not open"); else {
+      ok(`${label} Add as app opens the steps`);
+      await tapOrClick(page, dlg.locator('button[aria-label="Close"]'), mobile);
+      await page.waitForTimeout(300);
+      if (await page.locator('[role="dialog"][aria-labelledby="install-title"]').count()) bad(`${label} Add as app close`, "still open"); else ok(`${label} Add as app close`);
+    }
   }
 
   // Shop panel

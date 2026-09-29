@@ -69,7 +69,7 @@ export function Products() {
             className="relative overflow-hidden rounded-[2rem] bg-neon p-3 text-ink sm:rounded-[2.5rem] sm:p-5 lg:p-8"
             style={{
               boxShadow:
-                "inset 0 1px 0 rgba(255,255,255,0.45), inset 0 -2px 0 rgba(0,0,0,0.18), 12px 16px 40px rgba(0,0,0,0.85), 0 0 90px -20px rgba(26,254,0,0.55)",
+                "inset 0 1px 0 rgba(255,255,255,0.55), inset 0 -2px 0 rgba(0,0,0,0.18), 14px 18px 44px rgba(52,72,36,0.38), -6px -6px 18px rgba(255,255,255,0.9), 0 0 90px -20px rgba(26,254,0,0.6)",
             }}
           >
             {/* Top bar: search and categories */}
@@ -97,7 +97,7 @@ export function Products() {
                       aria-selected={on}
                       onClick={() => setCat(c.key)}
                       className={cn(
-                        "flex shrink-0 flex-col items-center gap-1.5 rounded-2xl px-3 py-2 text-[0.62rem] font-extrabold uppercase tracking-[0.14em] transition-colors",
+                        "flex shrink-0 flex-col items-center gap-1.5 rounded-2xl px-3 py-2 text-[0.7rem] font-extrabold uppercase tracking-[0.14em] transition-colors",
                         on ? "text-ink" : "text-ink/55 hover:text-ink",
                       )}
                     >
@@ -208,7 +208,7 @@ export function Products() {
                           >
                             <Heart className={cn("h-4 w-4", fav && "fill-current")} aria-hidden="true" />
                           </button>
-                          {p.isNew ? <span className="absolute right-2.5 top-2.5 z-10 rounded-full bg-neon px-2.5 py-1 text-[0.58rem] font-extrabold uppercase tracking-[0.14em] text-ink">New</span> : null}
+                          {p.isNew ? <span className="absolute right-2.5 top-2.5 z-10 rounded-full bg-neon px-2.5 py-1 text-[0.7rem] font-extrabold uppercase tracking-[0.14em] text-ink">New</span> : null}
                           <button type="button" onClick={() => setOpen(p)} className="block w-full" aria-label={`Open ${p.name}`}>
                             <span className="relative block aspect-[4/5] w-full">
                               <img
@@ -236,13 +236,13 @@ export function Products() {
                         </div>
                         <div className="flex flex-1 flex-col px-1 pb-1 pt-3">
                           <h3 className="font-display text-[0.7rem] font-bold uppercase leading-snug text-ink sm:text-xs">{p.name}</h3>
-                          <p className="mt-1 text-[0.68rem] text-ink/55 sm:text-xs">Sizes S to 5XL · {p.color}</p>
+                          <p className="mt-1 text-[0.7rem] text-ink/55 sm:text-xs">Sizes S to 5XL · {p.color}</p>
                           <div className="mt-auto flex items-center justify-between gap-2 pt-3">
                             <span className="font-display text-sm font-extrabold text-ink">{money(p.price)}</span>
                             <button
                               type="button"
                               onClick={() => setOpen(p)}
-                              className="inline-flex h-9 items-center rounded-full bg-ink px-3.5 text-[0.6rem] font-extrabold uppercase tracking-[0.14em] text-white transition-[transform,background-color] duration-150 hover:bg-black hover:-translate-y-0.5 active:translate-y-0 sm:text-[0.66rem]"
+                              className="inline-flex h-9 items-center rounded-full bg-ink px-3.5 text-[0.7rem] font-extrabold uppercase tracking-[0.14em] text-white transition-[transform,background-color] duration-150 hover:bg-black hover:-translate-y-0.5 active:translate-y-0 sm:text-[0.7rem]"
                             >
                               Buy now
                             </button>
@@ -261,7 +261,7 @@ export function Products() {
                       </div>
                       <div className="flex flex-col justify-between gap-4 px-1 pb-1 sm:col-span-2 sm:py-2">
                         <div>
-                          <span className="inline-flex items-center gap-1.5 rounded-full bg-neon px-2.5 py-1 text-[0.58rem] font-extrabold uppercase tracking-[0.14em] text-ink">
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-neon px-2.5 py-1 text-[0.7rem] font-extrabold uppercase tracking-[0.14em] text-ink">
                             <Sparkles className="h-3 w-3" aria-hidden="true" /> Show merch
                           </span>
                           <h3 className="font-display mt-3 text-base font-extrabold uppercase leading-tight text-ink sm:text-xl">{m.name}</h3>
@@ -290,7 +290,7 @@ export function Products() {
                 { icon: Tag, k: "Cut", v: "Oversized 7.4 oz cotton" },
               ].map(({ icon: Icon, k, v }) => (
                 <li key={k} className="min-w-0 rounded-2xl bg-white/85 px-3 py-3 sm:px-4">
-                  <p className="flex items-center gap-1.5 text-[0.62rem] font-extrabold uppercase tracking-[0.16em] text-ink">
+                  <p className="flex items-center gap-1.5 text-[0.7rem] font-extrabold uppercase tracking-[0.16em] text-ink">
                     <Icon className="h-3.5 w-3.5" aria-hidden="true" /> {k}
                   </p>
                   <p className="mt-1 text-[0.7rem] leading-snug text-ink/65 sm:text-xs">{v}</p>

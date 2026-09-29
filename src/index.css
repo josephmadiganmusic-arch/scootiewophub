@@ -2,15 +2,17 @@
 @import "tw-animate-css";
 
 /* ------------------------------------------------------------------
-   STARRBABY WRLDWIDE design tokens
-   Black ground, white writing, neon green accents (#1AFE00).
-   Display: Drunk Wide. Body: Lato.
+   STARRBABY WRLDWIDE design tokens, light cream edition (2026-09-29).
+   Cream ground with a hint of his green, near black ink for writing, the
+   neon #1AFE00 for fills and highlights, a deep green for accent text so it
+   still reads on cream. Soft 3D throughout: lit top edges, deep lower
+   shadows, buttons that pop.
+   Display: Druk Wide (licensed, stand in Unbounded). Body: Lato.
    ------------------------------------------------------------------ */
 
 /* The display face is Druk Wide (Commercial Type), a licensed font. Drop the
    licensed web files in /public/fonts under any of these names and the face
-   lights up. Until then the stack falls through to Unbounded, the closest
-   open wide grotesque. */
+   lights up. Until then the stack falls through to Unbounded. */
 @font-face {
   font-family: "Drunk Wide";
   src: url("/fonts/DrukWide-Bold.woff2") format("woff2"),
@@ -23,9 +25,8 @@
   font-display: swap;
 }
 
-/* Self hosted stand in and body faces. Served from this origin and preloaded
-   from index.html so the display face is ready at first paint and the type
-   never paints small and then jumps. Latin subsets only. */
+/* Self hosted stand in and body faces, preloaded from index.html so the type
+   is ready at first paint and never paints small and then jumps. */
 @font-face {
   font-family: "Unbounded";
   src: url("/fonts/Unbounded-800-latin.woff2") format("woff2");
@@ -34,28 +35,9 @@
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-@font-face {
-  font-family: "Lato";
-  src: url("/fonts/Lato-400-latin.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Lato";
-  src: url("/fonts/Lato-700-latin.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Lato";
-  src: url("/fonts/Lato-900-latin.woff2") format("woff2");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-/* Fallback tuned to Unbounded's width so a late swap barely moves anything. */
+@font-face { font-family: "Lato"; src: url("/fonts/Lato-400-latin.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Lato"; src: url("/fonts/Lato-700-latin.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Lato"; src: url("/fonts/Lato-900-latin.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
 @font-face {
   font-family: "Unbounded Fallback";
   src: local("Arial Black"), local("Arial-BoldMT"), local("Arial Bold");
@@ -69,17 +51,20 @@
   --font-display: "Drunk Wide", "Unbounded", "Unbounded Fallback", sans-serif;
   --font-sans: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  --color-background: #050505;
-  --color-foreground: #ffffff;
-  --color-ink: #050505;
+  --color-background: #F2F4EA;
+  --color-foreground: #0B1A08;
+  --color-paper: #F2F4EA;
+  --color-paper-2: #E6F6DC;
+  --color-cream: #FBFAF4;
+  --color-mint: #CDF8BE;
+  --color-ink: #0B1A08;
   --color-neon: #1AFE00;
-  --color-neon-hi: #7dff6b;
-  --color-neon-lo: #0fb500;
-  --color-neon-deep: #0a5c00;
-  --color-muted: rgba(255, 255, 255, 0.62);
-  --color-dim: rgba(255, 255, 255, 0.38);
-  --color-line: rgba(255, 255, 255, 0.08);
-  --color-panel: #111111;
+  --color-neon-hi: #7DFF6B;
+  --color-neon-lo: #0FB500;
+  --color-neon-deep: #0B7A00;
+  --color-muted: rgba(11, 26, 8, 0.64);
+  --color-dim: rgba(11, 26, 8, 0.42);
+  --color-line: rgba(11, 26, 8, 0.1);
 
   --radius-sm: 0.5rem;
   --radius-md: 0.875rem;
@@ -91,20 +76,21 @@
 }
 
 :root {
-  --background: #050505;
-  --foreground: #ffffff;
+  --background: #F2F4EA;
+  --foreground: #0B1A08;
   --ns-accent: #1AFE00;
   --neon: #1AFE00;
-  --neon-hi: #7dff6b;
-  --neon-lo: #0fb500;
-  --neu-hi: #171717;
-  --neu-lo: #0b0b0b;
-  --neu-edge: rgba(255, 255, 255, 0.09);
-  --neu-light: rgba(255, 255, 255, 0.05);
-  --neu-dark: rgba(0, 0, 0, 0.85);
+  --neon-hi: #7DFF6B;
+  --neon-lo: #0FB500;
+  --neon-deep: #0B7A00;
+  --neu-hi: #FDFCF7;
+  --neu-lo: #E9EBDF;
+  --neu-edge: rgba(255, 255, 255, 0.95);
+  --neu-light: rgba(255, 255, 255, 0.9);
+  --neu-dark: rgba(52, 72, 36, 0.22);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 @layer base {
@@ -117,8 +103,8 @@
     width: 100%;
   }
   body {
-    background: #050505;
-    color: #ffffff;
+    background: #F2F4EA;
+    color: #0B1A08;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -129,13 +115,13 @@
     min-height: 100dvh;
   }
   button, a, [role="button"] { touch-action: manipulation; }
-  :focus-visible { outline: 2px solid #1AFE00; outline-offset: 3px; }
+  :focus-visible { outline: 2px solid #0B7A00; outline-offset: 3px; }
   img { max-width: 100%; height: auto; display: block; }
   section[id] { scroll-margin-top: calc(5.5rem + var(--live-h, 0px)); }
-  ::selection { background: #1AFE00; color: #050505; }
+  ::selection { background: #1AFE00; color: #0B1A08; }
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: rgba(26, 254, 0, 0.22); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb { background: rgba(11, 122, 0, 0.35); border-radius: 3px; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
@@ -170,16 +156,16 @@
   }
   .eyebrow {
     font-family: var(--font-sans);
-    font-weight: 700;
+    font-weight: 900;
     font-size: 0.7rem;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: #1AFE00;
+    color: #0B7A00;
   }
   .lead {
     font-size: clamp(1.05rem, 1.4vw, 1.25rem);
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(11, 26, 8, 0.72);
   }
   .container-x {
     width: 100%;
@@ -193,33 +179,40 @@
   @media (min-width: 768px) { .section-pad { padding-block: 7rem; } }
   @media (min-width: 1280px) { .section-pad { padding-block: 8.5rem; } }
   .text-neon { color: #1AFE00; }
-  .neon-glow-text { text-shadow: 0 0 18px rgba(26, 254, 0, 0.45), 0 0 48px rgba(26, 254, 0, 0.18); }
-  .stroke-white {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.55);
-    color: transparent;
+  .text-neon-deep { color: #0B7A00; }
+  /* His wordmark treatment: neon fill with an ink outline, reads on cream. */
+  .text-neon-outline {
+    color: #1AFE00;
+    -webkit-text-stroke: 0.035em #0B1A08;
+    paint-order: stroke fill;
+    text-shadow: 0.04em 0.05em 0 rgba(11, 26, 8, 0.18);
   }
+  .neon-glow-text { text-shadow: 0 0 18px rgba(26, 254, 0, 0.35); }
   .grain::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.045;
+    opacity: 0.05;
     background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22160%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E");
     background-size: 160px 160px;
+  }
+  /* Section wash: a soft green cream block behind alternating sections */
+  .wash {
+    background: linear-gradient(180deg, rgba(205, 248, 190, 0) 0%, rgba(205, 248, 190, 0.45) 18%, rgba(205, 248, 190, 0.45) 82%, rgba(205, 248, 190, 0) 100%);
   }
 }
 
 /* ------------------------------------------------------------------
-   Soft 3D system. Dark neumorphism on black with neon green edges:
-   raised gradient surfaces with a lit top edge and a deep lower shadow,
-   inset wells for inputs, a green raised primary button, a dark raised
-   secondary button. Unlayered on purpose so they win over utilities.
+   Soft 3D system, light. Raised cream surfaces with a white lit edge and
+   a green tinted lower shadow, inset wells for inputs, a neon raised
+   primary button, a cream raised secondary button. Unlayered on purpose.
    ------------------------------------------------------------------ */
 .neu {
   background: linear-gradient(145deg, var(--neu-hi) 0%, var(--neu-lo) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-top-color: rgba(255, 255, 255, 0.13);
-  border-bottom-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-top-color: rgba(255, 255, 255, 1);
+  border-bottom-color: rgba(52, 72, 36, 0.12);
   border-radius: 1.75rem;
   box-shadow:
     inset 0 1px 0 var(--neu-edge),
@@ -228,9 +221,9 @@
 }
 .neu-sm {
   background: linear-gradient(145deg, var(--neu-hi) 0%, var(--neu-lo) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-top-color: rgba(255, 255, 255, 0.13);
-  border-bottom-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-top-color: rgba(255, 255, 255, 1);
+  border-bottom-color: rgba(52, 72, 36, 0.12);
   border-radius: 1.25rem;
   box-shadow:
     inset 0 1px 0 var(--neu-edge),
@@ -239,9 +232,9 @@
 }
 .neu-xs {
   background: linear-gradient(145deg, var(--neu-hi) 0%, var(--neu-lo) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-top-color: rgba(255, 255, 255, 0.13);
-  border-bottom-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-top-color: rgba(255, 255, 255, 1);
+  border-bottom-color: rgba(52, 72, 36, 0.12);
   border-radius: 0.875rem;
   box-shadow:
     inset 0 1px 0 var(--neu-edge),
@@ -251,13 +244,13 @@
 .neu-round { border-radius: 9999px; }
 .neu-sharp { border-radius: 0.25rem; }
 .neu-neon {
-  border-color: rgba(26, 254, 0, 0.28);
-  border-top-color: rgba(125, 255, 107, 0.42);
+  border-color: rgba(11, 122, 0, 0.22);
+  border-top-color: rgba(255, 255, 255, 1);
   box-shadow:
-    inset 0 1px 0 rgba(26, 254, 0, 0.18),
+    inset 0 1px 0 var(--neu-edge),
     10px 12px 28px var(--neu-dark),
     -6px -6px 18px var(--neu-light),
-    0 0 48px -10px rgba(26, 254, 0, 0.35);
+    0 0 44px -10px rgba(26, 254, 0, 0.5);
 }
 .neu-lift {
   transition: transform 0.35s var(--ease-out), box-shadow 0.35s ease, border-color 0.35s ease;
@@ -265,40 +258,39 @@
 @media (hover: hover) and (pointer: fine) {
   .neu-lift:hover {
     transform: translateY(-4px);
-    border-color: rgba(26, 254, 0, 0.24);
-    border-top-color: rgba(125, 255, 107, 0.36);
+    border-color: rgba(11, 122, 0, 0.25);
     box-shadow:
       inset 0 1px 0 var(--neu-edge),
-      14px 18px 36px rgba(0, 0, 0, 0.9),
+      14px 18px 36px rgba(52, 72, 36, 0.28),
       -6px -6px 18px var(--neu-light),
-      0 0 44px -12px rgba(26, 254, 0, 0.35);
+      0 0 40px -12px rgba(26, 254, 0, 0.55);
   }
 }
 
 /* Inset wells: inputs */
 .neu-in {
-  background: linear-gradient(145deg, #070707 0%, #121212 100%);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-top-color: rgba(0, 0, 0, 0.65);
-  border-bottom-color: rgba(255, 255, 255, 0.07);
+  background: linear-gradient(145deg, #E7E9DE 0%, #F7F8F1 100%);
+  border: 1px solid rgba(52, 72, 36, 0.06);
+  border-top-color: rgba(52, 72, 36, 0.14);
+  border-bottom-color: rgba(255, 255, 255, 0.9);
   border-radius: 9999px;
-  color: #fff;
+  color: #0B1A08;
   box-shadow:
-    inset 5px 5px 12px rgba(0, 0, 0, 0.85),
-    inset -3px -3px 8px rgba(255, 255, 255, 0.045);
+    inset 5px 5px 12px rgba(52, 72, 36, 0.16),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.95);
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
-.neu-in::placeholder { color: rgba(255, 255, 255, 0.3); }
+.neu-in::placeholder { color: rgba(11, 26, 8, 0.38); }
 .neu-in:focus, .neu-in:focus-visible {
   outline: none;
-  border-color: rgba(26, 254, 0, 0.3);
+  border-color: rgba(11, 122, 0, 0.35);
   box-shadow:
-    inset 5px 5px 12px rgba(0, 0, 0, 0.85),
-    inset -3px -3px 8px rgba(255, 255, 255, 0.045),
-    0 0 0 2px rgba(26, 254, 0, 0.45);
+    inset 5px 5px 12px rgba(52, 72, 36, 0.16),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.95),
+    0 0 0 2px rgba(26, 254, 0, 0.55);
 }
 
-/* Green raised primary button */
+/* Neon raised primary button */
 .btn3d-neon {
   display: inline-flex;
   align-items: center;
@@ -311,28 +303,28 @@
   font-size: 0.8rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #050505;
+  color: #0B1A08;
   background: linear-gradient(180deg, var(--neon-hi) 0%, var(--neon) 46%, var(--neon-lo) 100%);
-  border: 1px solid rgba(0, 0, 0, 0.35);
-  border-top-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(11, 26, 8, 0.28);
+  border-top-color: rgba(255, 255, 255, 0.7);
   border-radius: 9999px;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.65),
-    inset 0 -3px 0 rgba(0, 0, 0, 0.2),
-    0 10px 24px -8px rgba(26, 254, 0, 0.7),
-    7px 8px 18px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.18),
+    0 12px 24px -8px rgba(26, 254, 0, 0.55),
+    7px 8px 18px rgba(52, 72, 36, 0.28),
     -4px -4px 12px var(--neu-light);
   transition: transform 0.16s var(--ease-out), box-shadow 0.16s ease, filter 0.16s ease;
 }
 @media (hover: hover) and (pointer: fine) {
   .btn3d-neon:hover:not(:disabled) {
-    filter: brightness(1.06);
+    filter: brightness(1.05);
     transform: translateY(-1px);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.7),
-      inset 0 -3px 0 rgba(0, 0, 0, 0.2),
-      0 16px 30px -8px rgba(26, 254, 0, 0.8),
-      9px 10px 22px rgba(0, 0, 0, 0.75),
+      inset 0 1px 0 rgba(255, 255, 255, 0.75),
+      inset 0 -3px 0 rgba(0, 0, 0, 0.18),
+      0 18px 30px -8px rgba(26, 254, 0, 0.65),
+      9px 10px 22px rgba(52, 72, 36, 0.32),
       -4px -4px 12px var(--neu-light);
   }
 }
@@ -340,13 +332,13 @@
   transform: translateY(1px) scale(0.985);
   filter: brightness(0.96);
   box-shadow:
-    inset 3px 4px 9px rgba(0, 0, 0, 0.35),
-    inset -2px -2px 6px rgba(255, 255, 255, 0.3),
-    2px 3px 8px rgba(0, 0, 0, 0.5);
+    inset 3px 4px 9px rgba(0, 0, 0, 0.28),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.35),
+    2px 3px 8px rgba(52, 72, 36, 0.25);
 }
 .btn3d-neon:disabled { opacity: 0.5; }
 
-/* Dark raised secondary button */
+/* Cream raised secondary button */
 .btn3d {
   display: inline-flex;
   align-items: center;
@@ -355,50 +347,79 @@
   min-height: 3rem;
   padding: 0.85rem 1.5rem;
   font-family: var(--font-sans);
-  font-weight: 800;
+  font-weight: 900;
   font-size: 0.8rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #fff;
-  background: linear-gradient(145deg, #1c1c1c 0%, #0f0f0f 100%);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-top-color: rgba(255, 255, 255, 0.15);
-  border-bottom-color: rgba(0, 0, 0, 0.65);
+  color: #0B1A08;
+  background: linear-gradient(145deg, #FFFFFF 0%, #ECEEE3 100%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-top-color: rgba(255, 255, 255, 1);
+  border-bottom-color: rgba(52, 72, 36, 0.16);
   border-radius: 9999px;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    6px 7px 16px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    6px 7px 16px rgba(52, 72, 36, 0.22),
     -4px -4px 10px var(--neu-light);
   transition: transform 0.16s var(--ease-out), box-shadow 0.16s ease, border-color 0.16s ease, color 0.16s ease;
 }
 @media (hover: hover) and (pointer: fine) {
   .btn3d:hover:not(:disabled) {
-    border-color: rgba(26, 254, 0, 0.32);
-    border-top-color: rgba(125, 255, 107, 0.45);
-    color: #1AFE00;
+    border-color: rgba(11, 122, 0, 0.35);
+    border-top-color: rgba(255, 255, 255, 1);
+    color: #0B7A00;
     transform: translateY(-1px);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.1),
-      8px 9px 20px rgba(0, 0, 0, 0.8),
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      8px 9px 20px rgba(52, 72, 36, 0.26),
       -4px -4px 10px var(--neu-light),
-      0 0 30px -8px rgba(26, 254, 0, 0.35);
+      0 0 30px -8px rgba(26, 254, 0, 0.45);
   }
 }
 .btn3d:active:not(:disabled) {
   transform: translateY(1px) scale(0.985);
   box-shadow:
-    inset 3px 4px 9px rgba(0, 0, 0, 0.7),
-    inset -2px -2px 6px rgba(255, 255, 255, 0.04);
+    inset 3px 4px 9px rgba(52, 72, 36, 0.2),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.8);
 }
-.btn3d.is-on { color: #1AFE00; border-color: rgba(26, 254, 0, 0.32); }
+.btn3d.is-on { color: #0B7A00; border-color: rgba(11, 122, 0, 0.35); }
 .btn3d-icon { width: 2.75rem; height: 2.75rem; min-height: 0; padding: 0; }
+
+/* Ink raised button (the dark one, for the shop cards and the strip) */
+.btn3d-ink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.85rem 1.5rem;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: linear-gradient(145deg, #1d2a1a 0%, #0B1A08 100%);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-top-color: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    7px 8px 18px rgba(52, 72, 36, 0.3),
+    -4px -4px 12px var(--neu-light);
+  transition: transform 0.16s var(--ease-out), box-shadow 0.16s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn3d-ink:hover:not(:disabled) { transform: translateY(-1px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 9px 10px 22px rgba(52,72,36,0.34), -4px -4px 12px var(--neu-light); }
+}
+.btn3d-ink:active:not(:disabled) { transform: translateY(1px) scale(0.985); }
 
 /* Engraved rule */
 .groove {
   height: 2px;
   border: 0;
-  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.9) 80%, transparent);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+  background: linear-gradient(90deg, transparent, rgba(52, 72, 36, 0.18) 20%, rgba(52, 72, 36, 0.18) 80%, transparent);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 /* Neon chip */
@@ -408,32 +429,38 @@
   gap: 0.4rem;
   padding: 0.35rem 0.75rem;
   border-radius: 9999px;
-  font-size: 0.66rem;
-  font-weight: 800;
+  font-size: 0.7rem;
+  font-weight: 900;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #1AFE00;
-  background: rgba(26, 254, 0, 0.08);
-  border: 1px solid rgba(26, 254, 0, 0.3);
-  box-shadow: inset 0 1px 0 rgba(26, 254, 0, 0.15), 0 0 18px -6px rgba(26, 254, 0, 0.5);
+  color: #0B7A00;
+  background: rgba(26, 254, 0, 0.16);
+  border: 1px solid rgba(11, 122, 0, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 4px 12px -6px rgba(26, 254, 0, 0.6);
 }
 
-/* Sticker badge: the tilted pill, in green */
+/* Sticker badge: the tilted pill */
 .sticker {
   display: inline-block;
   padding: 0.55rem 1rem;
   border-radius: 9999px;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   line-height: 1.35;
-  color: #050505;
+  color: #0B1A08;
   background: linear-gradient(180deg, var(--neon-hi), var(--neon) 55%, var(--neon-lo));
-  border: 1px solid rgba(0,0,0,0.4);
-  border-top-color: rgba(255,255,255,0.5);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 6px 8px 18px rgba(0,0,0,0.7), 0 0 26px -6px rgba(26,254,0,0.6);
+  border: 1px solid rgba(11, 26, 8, 0.35);
+  border-top-color: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 6px 8px 18px rgba(52,72,36,0.28), 0 0 26px -6px rgba(26,254,0,0.6);
+}
+.sticker-cream {
+  background: linear-gradient(145deg, #FFFFFF 0%, #ECEEE3 100%);
+  border-color: rgba(255, 255, 255, 0.9);
+  border-bottom-color: rgba(52, 72, 36, 0.16);
+  box-shadow: inset 0 1px 0 #fff, 6px 8px 18px rgba(52,72,36,0.24);
 }
 
 /* ------------------------------------------------------------------
@@ -466,8 +493,8 @@
   50% { transform: perspective(900px) rotateY(26deg) rotateX(-5deg); }
 }
 @keyframes sb-pulse-ring {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(26, 254, 0, 0.35), 0 30px 80px -20px rgba(0,0,0,0.9); }
-  50% { box-shadow: 0 0 0 18px rgba(26, 254, 0, 0), 0 30px 80px -20px rgba(0,0,0,0.9); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(26, 254, 0, 0.45), 0 30px 80px -20px rgba(52, 72, 36, 0.45); }
+  50% { box-shadow: 0 0 0 18px rgba(26, 254, 0, 0), 0 30px 80px -20px rgba(52, 72, 36, 0.45); }
 }
 @keyframes sb-marquee {
   0% { transform: translate3d(0, 0, 0); }
@@ -500,18 +527,18 @@
   .tilt:hover { transform: none; }
 }
 
-/* The live strip: black bar, green hairline, a slow shimmer across it */
+/* The live strip: neon bar with ink type */
 .live-strip {
-  background: linear-gradient(90deg, #050505 0%, #06170a 35%, #050505 65%, #061a05 100%);
-  border-bottom: 1px solid rgba(26, 254, 0, 0.35);
-  box-shadow: 0 8px 30px -12px rgba(26, 254, 0, 0.5);
+  background: linear-gradient(180deg, #7DFF6B 0%, #1AFE00 55%, #12D400 100%);
+  border-bottom: 1px solid rgba(11, 26, 8, 0.25);
+  box-shadow: 0 8px 30px -12px rgba(26, 254, 0, 0.8);
   overflow: hidden;
 }
 .live-strip::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(26, 254, 0, 0.09), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
   animation: sb-shimmer 3s ease-in-out infinite;
   pointer-events: none;
 }
@@ -522,6 +549,24 @@
 @media (prefers-reduced-motion: reduce) {
   .live-strip::before { animation: none; }
 }
+
+/* Phone tab bar, flush to the bottom edge */
+.tabbar {
+  background: linear-gradient(180deg, #FDFCF7 0%, #ECEEE3 100%);
+  border-top: 1px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 -12px 30px -10px rgba(52, 72, 36, 0.3), inset 0 1px 0 #fff;
+}
+.tab-live {
+  background: linear-gradient(180deg, var(--neon-hi) 0%, var(--neon) 50%, var(--neon-lo) 100%);
+  border: 3px solid #F2F4EA;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.18),
+    0 10px 24px -6px rgba(26, 254, 0, 0.7),
+    0 8px 18px rgba(52, 72, 36, 0.3);
+  transition: transform 0.16s var(--ease-out);
+}
+.tab-live:active { transform: translateY(1px) scale(0.97); }
 
 /* Hide scrollbars on chip rows */
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }

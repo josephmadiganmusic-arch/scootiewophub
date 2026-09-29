@@ -33,7 +33,13 @@ Set `VITE_SIGNUP_ENDPOINT` in a `.env` file to a URL that accepts a JSON POST of
 
 Railway project `hospitable-kindness`, service `scootiewophub`, connected to this GitHub repo. Every push to `main` builds with Railpack, which detects the Vite static site, runs `pnpm build`, and serves `dist/` with Caddy. There is no server code, no database and no uploads, so the service needs no volume and no environment variables beyond the optional `VITE_SIGNUP_ENDPOINT`. Public URL until a domain is attached: https://scootiewophub-production.up.railway.app
 
+## Add as app
+
+The site is an installable web app. `public/manifest.webmanifest` names it, `public/icons` holds the icons, and `public/sw.js` is a small service worker that caches images and fonts and makes the install prompt available. The Add as app button in the header opens the real install prompt on Chrome and Android and shows the steps on iPhone, where Safari has no install API.
+
 ## Design notes
+
+- Light cream ground with his green: cream `#F2F4EA`, ink `#0B1A08` for writing, neon `#1AFE00` for fills and highlights, deep green `#0B7A00` for accent text so it reads on cream. Big display words in neon use the outlined wordmark treatment (`.text-neon-outline`).
 
 - Raised surfaces use the `.neu` classes, buttons use `.btn3d` and `.btn3d-neon`. These are unlayered CSS, so responsive `hidden` utilities go on a wrapper element, not on the button.
 - Infinite motion is CSS keyframes only. Scroll reveals are transitions driven by an IntersectionObserver.

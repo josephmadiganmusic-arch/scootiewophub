@@ -7,12 +7,12 @@ export function Footer() {
   const line = `${brand.name} · ${brand.tagline} · `;
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/8 pt-10">
+    <footer className="relative overflow-hidden border-t border-ink/10 pt-10">
       {/* Marquee */}
       <div className="overflow-hidden whitespace-nowrap" aria-hidden="true">
         <div className="anim-marquee inline-block will-change-transform">
           {[0, 1].map((k) => (
-            <span key={k} className="font-display inline-block pr-4 text-[clamp(2rem,7vw,5.5rem)] font-extrabold uppercase leading-none tracking-tight text-white/[0.07]">
+            <span key={k} className="font-display inline-block pr-4 text-[clamp(2rem,7vw,5.5rem)] font-extrabold uppercase leading-none tracking-tight text-ink/[0.06]">
               {line.repeat(2)}
             </span>
           ))}
@@ -27,21 +27,21 @@ export function Footer() {
               <p className="font-display text-sm font-extrabold uppercase leading-tight tracking-[0.08em]">
                 Starrbaby
                 <br />
-                <span className="text-neon">Wrldwide</span>
+                <span className="text-neon-deep">Wrldwide</span>
               </p>
             </div>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/55">
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink/55">
               Music, fashion, lifestyle. Founded {brand.founded} by Scootie Wop in {brand.hometown}.
             </p>
-            <p className="font-display mt-4 text-xs font-bold uppercase tracking-[0.24em] text-neon">{brand.tagline}</p>
+            <p className="font-display mt-4 text-xs font-bold uppercase tracking-[0.24em] text-neon-deep">{brand.tagline}</p>
           </div>
 
           <nav className="md:col-span-3" aria-label="Footer sections">
-            <p className="eyebrow !text-white/45">Site</p>
+            <p className="eyebrow !text-ink/45">Site</p>
             <ul className="mt-3 space-y-2">
               {nav.map((n) => (
                 <li key={n.id}>
-                  <button type="button" onClick={() => go(n.id)} className="text-sm text-white/70 transition-colors hover:text-neon">
+                  <button type="button" onClick={() => go(n.id)} className="text-sm text-ink/70 transition-colors hover:text-neon-deep">
                     {n.label}
                   </button>
                 </li>
@@ -50,7 +50,7 @@ export function Footer() {
           </nav>
 
           <div className="md:col-span-4">
-            <p className="eyebrow !text-white/45">Follow</p>
+            <p className="eyebrow !text-ink/45">Follow</p>
             <ul className="mt-3 grid grid-cols-2 gap-2">
               {socials.map((s) => (
                 <li key={s.key}>
@@ -58,13 +58,13 @@ export function Footer() {
                     href={s.url}
                     target="_blank"
                     rel="noopener"
-                    className="neu-xs neu-lift flex items-center justify-between gap-2 px-3.5 py-2.5 text-sm text-white/80"
+                    className="neu-xs neu-lift flex items-center justify-between gap-2 px-3.5 py-2.5 text-sm text-ink/80"
                   >
                     <span className="min-w-0">
-                      <span className="block text-[0.6rem] font-bold uppercase tracking-[0.16em] text-white/40">{s.label}</span>
+                      <span className="block text-[0.7rem] font-bold uppercase tracking-[0.16em] text-ink/40">{s.label}</span>
                       <span className="block truncate">{s.handle}</span>
                     </span>
-                    <ArrowUpRight className="h-4 w-4 shrink-0 text-neon" aria-hidden="true" />
+                    <ArrowUpRight className="h-4 w-4 shrink-0 text-neon-deep" aria-hidden="true" />
                   </a>
                 </li>
               ))}
@@ -75,9 +75,9 @@ export function Footer() {
               </li>
             </ul>
             {brand.contactEmail ? (
-              <p className="mt-5 text-sm text-white/55">
-                <span className="eyebrow !text-white/45 block">Contact</span>
-                <a href={`mailto:${brand.contactEmail}`} className="mt-1 inline-block text-white/80 transition-colors hover:text-neon">
+              <p className="mt-5 text-sm text-ink/55">
+                <span className="eyebrow !text-ink/45 block">Contact</span>
+                <a href={`mailto:${brand.contactEmail}`} className="mt-1 inline-block text-ink/80 transition-colors hover:text-neon-deep">
                   {brand.contactEmail}
                 </a>
               </p>
@@ -86,7 +86,7 @@ export function Footer() {
         </div>
 
         <div className="groove mt-10" aria-hidden="true" />
-        <div className="flex flex-col gap-2 pt-5 text-[0.66rem] uppercase tracking-[0.18em] text-white/35 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-2 pt-5 text-[0.7rem] uppercase tracking-[0.18em] text-ink/40 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {year} {brand.name}. All rights reserved.</p>
           <p>{brand.hometown}</p>
         </div>

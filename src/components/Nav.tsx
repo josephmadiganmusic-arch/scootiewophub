@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, ShoppingBag, X } from "lucide-react";
 import { nav } from "@/data/site";
+import { InstallApp } from "./InstallApp";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { cn } from "@/lib/utils";
 
@@ -67,10 +68,10 @@ export function Nav() {
               height={40}
               className="h-9 w-9 shrink-0 drop-shadow-[0_0_14px_rgba(26,254,0,0.5)] sm:h-10 sm:w-10"
             />
-            <span className="font-display truncate text-[0.62rem] font-extrabold uppercase leading-[1.1] tracking-[0.08em] sm:text-[0.72rem]">
+            <span className="font-display hidden truncate text-[0.7rem] font-extrabold uppercase leading-[1.1] tracking-[0.08em] min-[360px]:block sm:text-[0.72rem]">
               Starrbaby
               <br />
-              <span className="text-neon">Wrldwide</span>
+              <span className="text-neon-deep">Wrldwide</span>
             </span>
           </a>
 
@@ -82,7 +83,7 @@ export function Nav() {
                 onClick={() => go(n.id)}
                 className={cn(
                   "group relative rounded-full px-3 py-2 text-[0.72rem] font-bold uppercase tracking-[0.18em] transition-colors duration-200",
-                  active === n.id ? "text-white" : "text-white/50 hover:text-white",
+                  active === n.id ? "text-ink" : "text-ink/50 hover:text-ink",
                 )}
                 aria-current={active === n.id ? "true" : undefined}
               >
@@ -100,6 +101,12 @@ export function Nav() {
 
           <div className="flex items-center gap-2">
             {/* Wrappers carry the responsive display: the raised button styles are unlayered and would beat a utility on the element itself. */}
+            <span className="block sm:hidden">
+              <InstallApp compact />
+            </span>
+            <span className="hidden sm:block">
+              <InstallApp />
+            </span>
             <span className="hidden sm:block">
               <button type="button" onClick={() => go("products")} className="btn3d-neon !min-h-11 !py-2.5">
                 <ShoppingBag className="h-4 w-4" aria-hidden="true" />

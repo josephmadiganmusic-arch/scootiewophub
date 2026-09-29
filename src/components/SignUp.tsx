@@ -69,7 +69,7 @@ export function SignUp() {
                   The Megaphone
                 </p>
                 <h2 id="signup-title" className="text-display-h2 mt-5">
-                  Join the <span className="text-neon">family</span> list
+                  Join the <span className="text-neon-outline">family</span> list
                 </h2>
                 <p className="lead mt-4 max-w-lg">
                   Shows, new music and merch drops. You hear first. No spam.
@@ -78,12 +78,12 @@ export function SignUp() {
 
               <div className="min-w-0 lg:col-span-6">
                 <form onSubmit={submit} noValidate className="neu-sm p-4 sm:p-5">
-                  <label htmlFor="signup-email" className="eyebrow !text-white/60">
+                  <label htmlFor="signup-email" className="eyebrow !text-ink/60">
                     Email
                   </label>
                   <div className="mt-2.5 flex flex-col gap-2.5 sm:flex-row">
                     <div className="relative min-w-0 flex-1">
-                      <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" aria-hidden="true" />
+                      <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/40" aria-hidden="true" />
                       <input
                         id="signup-email"
                         type="email"
@@ -107,29 +107,29 @@ export function SignUp() {
                   </div>
                   <p id="signup-status" className="mt-3 min-h-5 text-xs" aria-live="polite">
                     {status === "error" ? (
-                      <span className="text-[#ff7b7b]">Check the email address and try again.</span>
+                      <span className="text-[#b42318]">Check the email address and try again.</span>
                     ) : status === "done" ? (
-                      <span className="flex items-center gap-1.5 text-neon">
+                      <span className="flex items-center gap-1.5 text-neon-deep">
                         <Check className="h-3.5 w-3.5" aria-hidden="true" /> You are on the list.
                       </span>
                     ) : status === "mail" ? (
-                      <span className="flex items-center gap-1.5 text-neon">
+                      <span className="flex items-center gap-1.5 text-neon-deep">
                         <Check className="h-3.5 w-3.5" aria-hidden="true" /> Your mail app opened with the note ready. Hit send and you are on the list.
                       </span>
                     ) : status === "handoff" ? (
-                      <span className="text-white/70">Finish signing up on the STARRBABY FAMILY page that just opened.</span>
+                      <span className="text-ink/70">Finish signing up on the STARRBABY FAMILY page that just opened.</span>
                     ) : (
-                      <span className="text-white/40">One email when something drops. Unsubscribe any time.</span>
+                      <span className="text-ink/40">One email when something drops. Unsubscribe any time.</span>
                     )}
                   </p>
                 </form>
 
                 <div className="mt-3 flex flex-wrap gap-2.5">
-                  <a href={brand.familyUrl} target="_blank" rel="noopener" className="btn3d !min-h-10 !px-4 !py-2 !text-[0.64rem]">
+                  <a href={brand.familyUrl} target="_blank" rel="noopener" className="btn3d !min-h-10 !px-4 !py-2 !text-[0.7rem]">
                     STARRBABY FAMILY <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                   </a>
                   {discord ? (
-                    <a href={discord.url} target="_blank" rel="noopener" className="btn3d !min-h-10 !px-4 !py-2 !text-[0.64rem]">
+                    <a href={discord.url} target="_blank" rel="noopener" className="btn3d !min-h-10 !px-4 !py-2 !text-[0.7rem]">
                       SBF Discord <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                     </a>
                   ) : null}

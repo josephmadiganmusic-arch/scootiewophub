@@ -60,7 +60,7 @@ export function ProductSheet({ product, onClose }: Props) {
     <div className="fixed inset-0 z-[80] flex items-end justify-center sm:items-center sm:p-4" role="presentation">
       <button
         type="button"
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        className="absolute inset-0 bg-ink/45 backdrop-blur-sm"
         aria-label="Close product"
         onClick={onClose}
       />
@@ -78,7 +78,7 @@ export function ProductSheet({ product, onClose }: Props) {
           <span className="sm:hidden" aria-hidden="true">
             <span className="block h-1.5 w-10 rounded-full bg-black/15" />
           </span>
-          <span className="hidden text-[0.66rem] font-extrabold uppercase tracking-[0.16em] text-ink/50 sm:inline-flex">
+          <span className="hidden text-[0.7rem] font-extrabold uppercase tracking-[0.16em] text-ink/50 sm:inline-flex">
             STARRBABY shop
           </span>
           <button
@@ -140,8 +140,8 @@ export function ProductSheet({ product, onClose }: Props) {
           {/* Details */}
           <div className="flex flex-col">
             <div className="flex flex-wrap gap-2">
-              {product.isNew ? <span className="rounded-full bg-ink px-2.5 py-1 text-[0.6rem] font-extrabold uppercase tracking-[0.14em] text-neon">New</span> : null}
-              <span className="rounded-full bg-neon px-2.5 py-1 text-[0.6rem] font-extrabold uppercase tracking-[0.14em] text-ink">{product.collection} collection</span>
+              {product.isNew ? <span className="rounded-full bg-ink px-2.5 py-1 text-[0.7rem] font-extrabold uppercase tracking-[0.14em] text-neon">New</span> : null}
+              <span className="rounded-full bg-neon px-2.5 py-1 text-[0.7rem] font-extrabold uppercase tracking-[0.14em] text-ink">{product.collection} collection</span>
             </div>
             <h2 id="sheet-title" className="font-display mt-3 text-xl font-extrabold uppercase leading-tight sm:text-2xl">
               {product.name}
@@ -151,7 +151,7 @@ export function ProductSheet({ product, onClose }: Props) {
 
             <div className="mt-5 flex items-center justify-between">
               <p className="text-[0.7rem] font-extrabold uppercase tracking-[0.16em]">Select size</p>
-              <a href={productUrl(product)} target="_blank" rel="noopener" className="text-[0.66rem] font-bold uppercase tracking-[0.14em] text-ink/55 underline underline-offset-4 hover:text-ink">
+              <a href={productUrl(product)} target="_blank" rel="noopener" className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-ink/55 underline underline-offset-4 hover:text-ink">
                 Size guide
               </a>
             </div>
@@ -204,7 +204,7 @@ export function ProductSheet({ product, onClose }: Props) {
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-[0.66rem] font-bold uppercase tracking-[0.14em] text-ink/55">Total price</p>
+                <p className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-ink/55">Total price</p>
                 <p className="font-display text-2xl font-extrabold leading-none">{money(total)}</p>
               </div>
             </div>
@@ -227,7 +227,7 @@ export function ProductSheet({ product, onClose }: Props) {
               >
                 Buy now, straight to checkout
               </a>
-              <p className="text-center text-[0.66rem] text-ink/45">Checkout runs on the STARRBABY shop. Opens in a new tab.</p>
+              <p className="text-center text-[0.7rem] text-ink/45">Checkout runs on the STARRBABY shop. Opens in a new tab.</p>
             </div>
           </div>
         </div>

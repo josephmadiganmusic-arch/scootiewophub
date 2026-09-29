@@ -36,7 +36,7 @@ export function Gallery() {
           eyebrow="Photo gallery"
           title={
             <span id="gallery-title">
-              In the <span className="text-neon">frame</span>
+              In the <span className="text-neon-outline">frame</span>
             </span>
           }
           lead="Eight photos of Scootie. Tap one to open it."
@@ -82,7 +82,7 @@ export function Gallery() {
               style={{ animation: "lb-in 0.25s cubic-bezier(0.23,1,0.32,1)" }}
             />
             <style>{`@keyframes lb-in { from { opacity: 0; transform: scale(0.96) } to { opacity: 1; transform: none } }`}</style>
-            <figcaption className="mt-3 text-center text-xs text-white/60">
+            <figcaption className="mt-3 text-center text-xs text-white/70">
               {current.alt} · {idx! + 1} of {gallery.length}
             </figcaption>
           </figure>

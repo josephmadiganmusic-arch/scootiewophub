@@ -16,7 +16,7 @@ export function About() {
           eyebrow={about.eyebrow}
           title={
             <span id="about-title">
-              The story of <span className="text-neon">SB</span>
+              The story of <span className="text-neon-outline">SB</span>
             </span>
           }
           lead={`Founded ${brand.founded} in ${brand.hometown}. Music, fashion, lifestyle.`}
@@ -50,10 +50,10 @@ export function About() {
             <div className="space-y-5">
               {about.paragraphs.map((p, i) => (
                 <Reveal key={i} index={i} as="div">
-                  <p className={i === 0 ? "lead text-white/85" : "text-base leading-[1.75] text-white/70 sm:text-lg"}>
+                  <p className={i === 0 ? "lead text-ink/85" : "text-base leading-[1.75] text-ink/70 sm:text-lg"}>
                     {i === 0 ? (
                       <>
-                        <span className="font-display text-neon text-[0.85em] uppercase tracking-wide">{brand.name}</span>
+                        <span className="font-display text-neon-deep text-[0.85em] uppercase tracking-wide">{brand.name}</span>
                         {p.slice(brand.name.length)}
                       </>
                     ) : (
@@ -74,10 +74,10 @@ export function About() {
                   loading="lazy"
                   className="absolute -top-5 right-6 h-12 w-12 rotate-12 drop-shadow-[0_0_14px_rgba(26,254,0,0.6)]"
                 />
-                <p className="font-display text-[0.95rem] font-bold uppercase leading-[1.5] tracking-wide text-white sm:text-lg">
+                <p className="font-display text-[0.95rem] font-bold uppercase leading-[1.5] tracking-wide text-ink sm:text-lg">
                   {brand.name} is music, it&rsquo;s fashion, it&rsquo;s a lifestyle.
                 </p>
-                <p className="mt-2 font-display text-neon neon-glow-text text-sm font-extrabold uppercase tracking-[0.2em] sm:text-base">
+                <p className="mt-2 font-display text-neon-deep neon-glow-text text-sm font-extrabold uppercase tracking-[0.2em] sm:text-base">
                   {brand.tagline}
                 </p>
               </blockquote>
@@ -88,16 +88,16 @@ export function About() {
               {about.milestones.map((m, i) => (
                 <Reveal key={m.title} index={i} as="li" className="min-w-0">
                   <div className="neu-xs neu-lift h-full px-5 py-4">
-                    <p className="eyebrow !text-[0.6rem]">{m.year}</p>
-                    <p className="font-display mt-1 text-[0.8rem] font-bold uppercase leading-tight text-white">{m.title}</p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-white/60">{m.body}</p>
+                    <p className="eyebrow !text-[0.7rem]">{m.year}</p>
+                    <p className="font-display mt-1 text-[0.8rem] font-bold uppercase leading-tight text-ink">{m.title}</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink/72">{m.body}</p>
                   </div>
                 </Reveal>
               ))}
             </ol>
 
             <Reveal index={2} className="mt-8">
-              <p className="eyebrow mb-3 !text-white/50">Inspired by</p>
+              <p className="eyebrow mb-3 !text-ink/50">Inspired by</p>
               <ul className="flex flex-wrap gap-2">
                 {about.influences.map((n) => (
                   <li key={n} className="chip-neon !normal-case !tracking-[0.08em] !text-[0.72rem]">

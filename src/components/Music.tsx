@@ -17,7 +17,7 @@ export function Music() {
           eyebrow="Music"
           title={
             <span id="music-title">
-              Listen <span className="text-neon">everywhere</span>
+              Listen <span className="text-neon-outline">everywhere</span>
             </span>
           }
           lead="One link for every platform. The album, the singles, and the weekly live."
@@ -44,10 +44,10 @@ export function Music() {
                   <p className="eyebrow flex items-center gap-2">
                     <Disc3 className="h-3.5 w-3.5" aria-hidden="true" /> Out now
                   </p>
-                  <h3 className="font-display mt-3 break-words text-2xl font-extrabold uppercase leading-[0.95] text-white sm:text-3xl xl:text-4xl">
+                  <h3 className="font-display mt-3 break-words text-2xl font-extrabold uppercase leading-[0.95] text-ink sm:text-3xl xl:text-4xl">
                     {f.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-white/65 sm:text-base">
+                  <p className="mt-3 text-sm leading-relaxed text-ink/65 sm:text-base">
                     Scootie Wop&rsquo;s album, out now everywhere you stream.
                   </p>
                 </div>
@@ -69,7 +69,7 @@ export function Music() {
           <Reveal index={1} className="lg:col-span-5">
             <div className="neu h-full p-5 sm:p-6">
               <p className="eyebrow">Singles</p>
-              <ul className="mt-3 divide-y divide-white/8">
+              <ul className="mt-3 divide-y divide-ink/10">
                 {music.singles.map((s) => (
                   <li key={s.url}>
                     <a
@@ -78,16 +78,16 @@ export function Music() {
                       rel="noopener"
                       className="group flex items-center gap-3 py-3"
                     >
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/5 text-white/70 transition-colors group-hover:bg-neon group-hover:text-ink">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink/5 text-ink/70 transition-colors group-hover:bg-neon group-hover:text-ink">
                         <Play className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
                       </span>
                       <span className="min-w-0 flex-1">
-                        <span className="font-display block truncate text-[0.78rem] font-bold uppercase text-white transition-colors group-hover:text-neon">
+                        <span className="font-display block truncate text-[0.78rem] font-bold uppercase text-ink transition-colors group-hover:text-neon-deep-deep">
                           {s.title}
                         </span>
-                        {"note" in s && s.note ? <span className="block text-xs text-white/45">{s.note}</span> : null}
+                        {"note" in s && s.note ? <span className="block text-xs text-ink/45">{s.note}</span> : null}
                       </span>
-                      <ArrowUpRight className="h-4 w-4 shrink-0 text-white/35 transition-[transform,color] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-neon" aria-hidden="true" />
+                      <ArrowUpRight className="h-4 w-4 shrink-0 text-ink/40 transition-[transform,color] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-neon-deep-deep" aria-hidden="true" />
                     </a>
                   </li>
                 ))}
@@ -98,11 +98,11 @@ export function Music() {
           {/* Platforms */}
           <Reveal index={2} className="lg:col-span-8">
             <div className="neu-sm flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
-              <p className="eyebrow !text-white/50">Streaming on</p>
+              <p className="eyebrow !text-ink/50">Streaming on</p>
               <ul className="flex flex-wrap gap-2">
                 {music.platforms.map((p) => (
                   <li key={p.key}>
-                    <a href={p.url} target="_blank" rel="noopener" className="btn3d !min-h-10 !px-4 !py-2 !text-[0.64rem]">
+                    <a href={p.url} target="_blank" rel="noopener" className="btn3d !min-h-10 !px-4 !py-2 !text-[0.7rem]">
                       {p.label}
                     </a>
                   </li>
@@ -123,10 +123,10 @@ export function Music() {
                 <Radio className="h-5 w-5" aria-hidden="true" />
               </span>
               <span className="min-w-0">
-                <span className="font-display block text-sm font-bold uppercase text-white">Get your song reviewed</span>
-                <span className="mt-1 block text-xs leading-relaxed text-white/55">Submit to STARR WARS, live every Thursday.</span>
+                <span className="font-display block text-sm font-bold uppercase text-ink">Get your song reviewed</span>
+                <span className="mt-1 block text-xs leading-relaxed text-ink/55">Submit to STARR WARS, live every Thursday.</span>
               </span>
-              <ArrowUpRight className="ml-auto h-4 w-4 shrink-0 text-neon" aria-hidden="true" />
+              <ArrowUpRight className="ml-auto h-4 w-4 shrink-0 text-neon-deep" aria-hidden="true" />
             </a>
           </Reveal>
         </div>
