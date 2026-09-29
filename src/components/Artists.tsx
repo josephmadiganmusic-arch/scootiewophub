@@ -37,7 +37,7 @@ export function Artists() {
                 />
                 <div
                   className="absolute inset-0 sm:hidden"
-                  style={{ background: "linear-gradient(180deg, rgba(230,238,215,0) 55%, rgba(230,238,215,1) 100%)" }}
+                  style={{ background: "linear-gradient(180deg, rgba(20,20,20,0) 55%, rgba(20,20,20,1) 100%)" }}
                   aria-hidden="true"
                 />
                 <span className="sticker absolute left-4 top-4 rotate-[-5deg]">Founder</span>
@@ -45,10 +45,10 @@ export function Artists() {
               <div className="flex flex-col justify-between gap-6 p-6 sm:col-span-3 sm:p-8">
                 <div>
                   <p className="eyebrow">{featured.role}</p>
-                  <h3 className="font-display mt-3 text-3xl font-extrabold uppercase leading-[0.95] text-ink sm:text-4xl lg:text-5xl">
+                  <h3 className="font-display mt-3 text-3xl font-extrabold uppercase leading-[0.95] text-fg sm:text-4xl lg:text-5xl">
                     {featured.name}
                   </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-ink/70 sm:text-base">{featured.bio}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-fg/70 sm:text-base">{featured.bio}</p>
                 </div>
                 <ul className="flex flex-wrap gap-2">
                   {featured.links.map((l) => (
@@ -71,8 +71,8 @@ export function Artists() {
                 <div className="neu-sm neu-lift flex items-center gap-4 p-4">
                   <img src={a.image} alt={a.imageAlt} width={80} height={80} loading="lazy" className="h-16 w-16 rounded-2xl object-cover" />
                   <div className="min-w-0">
-                    <h3 className="font-display truncate text-sm font-bold uppercase text-ink">{a.name}</h3>
-                    <p className="text-xs text-ink/55">{a.role}</p>
+                    <h3 className="font-display truncate text-sm font-bold uppercase text-fg">{a.name}</h3>
+                    <p className="text-xs text-fg/55">{a.role}</p>
                   </div>
                 </div>
               </Reveal>
@@ -80,12 +80,12 @@ export function Artists() {
 
             <Reveal index={1}>
               <div className="neu-sm flex items-center gap-4 border-dashed p-5">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-neon/10 text-neon-deep">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-neon/10 text-neon">
                   <Plus className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <div className="min-w-0">
-                  <h3 className="font-display text-sm font-bold uppercase text-ink">More on the way</h3>
-                  <p className="mt-1 text-xs leading-relaxed text-ink/55">
+                  <h3 className="font-display text-sm font-bold uppercase text-fg">More on the way</h3>
+                  <p className="mt-1 text-xs leading-relaxed text-fg/55">
                     Building up artists he believes in. New names land here as they join the family.
                   </p>
                 </div>
@@ -95,27 +95,27 @@ export function Artists() {
             <Reveal index={2}>
               <div className="neu p-5 sm:p-6">
                 <p className="eyebrow">On SB WRLDWIDE records</p>
-                <ul className="mt-4 divide-y divide-ink/10">
+                <ul className="mt-4 divide-y divide-white/10">
                   {featuredOn.map((f) => (
                     <li key={f.name}>
                       <a
                         href={f.url}
                         target="_blank"
                         rel="noopener"
-                        className="group flex items-center justify-between gap-3 py-3 transition-colors hover:text-neon-deep"
+                        className="group flex items-center justify-between gap-3 py-3 transition-colors hover:text-neon"
                       >
                         <span className="min-w-0">
-                          <span className="font-display block truncate text-sm font-bold uppercase text-ink group-hover:text-neon-deep-deep">
+                          <span className="font-display block truncate text-sm font-bold uppercase text-fg group-hover:text-neon">
                             {f.name}
                           </span>
-                          <span className="block text-xs text-ink/50">on {f.release}</span>
+                          <span className="block text-xs text-fg/50">on {f.release}</span>
                         </span>
-                        <ArrowUpRight className="h-4 w-4 shrink-0 text-ink/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-neon-deep-deep" aria-hidden="true" />
+                        <ArrowUpRight className="h-4 w-4 shrink-0 text-fg/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-neon" aria-hidden="true" />
                       </a>
                     </li>
                   ))}
                 </ul>
-                <button type="button" onClick={() => go("music")} className="mt-3 text-[0.7rem] font-bold uppercase tracking-[0.2em] text-neon-deep">
+                <button type="button" onClick={() => go("music")} className="mt-3 text-[0.7rem] font-bold uppercase tracking-[0.2em] text-neon">
                   Hear the records
                 </button>
               </div>

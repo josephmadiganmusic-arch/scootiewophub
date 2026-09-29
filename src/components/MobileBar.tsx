@@ -25,14 +25,14 @@ export function MobileBar({ live }: Props) {
         className="tabbar relative flex items-end px-2 pt-2"
         style={{ paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))" }}
       >
-        <button type="button" onClick={top} className={cn(item, "text-ink/60")}>
+        <button type="button" onClick={top} className={cn(item, "text-fg/60")}>
           <Home className="h-5 w-5" aria-hidden="true" />
           Home
         </button>
         <button
           type="button"
           onClick={() => go("products")}
-          className={cn(item, active === "products" ? "text-neon-deep" : "text-ink/60")}
+          className={cn(item, active === "products" ? "text-neon" : "text-fg/60")}
           aria-current={active === "products" ? "true" : undefined}
         >
           <ShoppingBag className="h-5 w-5" aria-hidden="true" />
@@ -52,11 +52,11 @@ export function MobileBar({ live }: Props) {
             {live ? (
               <span className="absolute right-1 top-1 flex h-3 w-3" aria-hidden="true">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#ff3b3b] opacity-70" />
-                <span className="relative inline-flex h-3 w-3 rounded-full border-2 border-[#E6EED7] bg-[#ff3b3b]" />
+                <span className="relative inline-flex h-3 w-3 rounded-full border-2 border-[#0A0A0A] bg-[#ff3b3b]" />
               </span>
             ) : null}
           </a>
-          <span className={cn("mt-1 text-[0.7rem] font-black uppercase tracking-[0.14em]", live ? "text-[#c81e1e]" : "text-ink/70")}>
+          <span className={cn("mt-1 text-[0.7rem] font-black uppercase tracking-[0.14em]", live ? "text-[#ff5a5a]" : "text-fg/70")}>
             {live ? "Live now" : "Live"}
           </span>
         </div>
@@ -64,7 +64,7 @@ export function MobileBar({ live }: Props) {
         <button
           type="button"
           onClick={() => go("music")}
-          className={cn(item, active === "music" ? "text-neon-deep" : "text-ink/60")}
+          className={cn(item, active === "music" ? "text-neon" : "text-fg/60")}
           aria-current={active === "music" ? "true" : undefined}
         >
           <Music2 className="h-5 w-5" aria-hidden="true" />
@@ -73,7 +73,7 @@ export function MobileBar({ live }: Props) {
         <button
           type="button"
           onClick={() => go("signup")}
-          className={cn(item, active === "signup" ? "text-neon-deep" : "text-ink/60")}
+          className={cn(item, active === "signup" ? "text-neon" : "text-fg/60")}
           aria-current={active === "signup" ? "true" : undefined}
         >
           <Megaphone className="h-5 w-5" aria-hidden="true" />

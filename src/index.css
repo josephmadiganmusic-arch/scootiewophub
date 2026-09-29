@@ -2,11 +2,11 @@
 @import "tw-animate-css";
 
 /* ------------------------------------------------------------------
-   STARRBABY WRLDWIDE design tokens, light cream edition (2026-09-29).
-   Cream ground with a hint of his green, near black ink for writing, the
-   neon #1AFE00 for fills and highlights, a deep green for accent text so it
-   still reads on cream. Soft 3D throughout: lit top edges, deep lower
-   shadows, buttons that pop.
+   STARRBABY WRLDWIDE design tokens, black velvet edition (2026-09-29).
+   Near black ground with a soft bokeh vignette, plush black felt tiles
+   with a lit top edge and a fuzzy halo, chrome rimmed glossy black panels
+   for the hero moments, deep green felt tiles as the second surface, his
+   neon #1AFE00 for glyphs, buttons and highlights, white type.
    Display: Druk Wide (licensed, stand in Unbounded). Body: Lato.
    ------------------------------------------------------------------ */
 
@@ -51,20 +51,22 @@
   --font-display: "Drunk Wide", "Unbounded", "Unbounded Fallback", sans-serif;
   --font-sans: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  --color-background: #E6EED7;
-  --color-foreground: #0B1A08;
-  --color-paper: #E6EED7;
-  --color-paper-2: #E6F6DC;
-  --color-cream: #FBFAF4;
-  --color-mint: #CDF8BE;
-  --color-ink: #0B1A08;
+  --color-background: #0A0A0A;
+  --color-foreground: #F3F3F0;
+  --color-fg: #F3F3F0;
+  --color-ink: #070707;
+  --color-tile: #141414;
+  --color-tile-hi: #1F1F1F;
+  --color-tile-lo: #0B0B0B;
+  --color-felt: #0B480B;
   --color-neon: #1AFE00;
   --color-neon-hi: #7DFF6B;
   --color-neon-lo: #0FB500;
   --color-neon-deep: #0B7A00;
-  --color-muted: rgba(11, 26, 8, 0.64);
-  --color-dim: rgba(11, 26, 8, 0.42);
-  --color-line: rgba(11, 26, 8, 0.1);
+  --color-chrome: #D9D9D9;
+  --color-muted: rgba(243, 243, 240, 0.62);
+  --color-dim: rgba(243, 243, 240, 0.4);
+  --color-line: rgba(255, 255, 255, 0.08);
 
   --radius-sm: 0.5rem;
   --radius-md: 0.875rem;
@@ -76,21 +78,24 @@
 }
 
 :root {
-  --background: #E6EED7;
-  --foreground: #0B1A08;
+  --background: #0A0A0A;
+  --foreground: #F3F3F0;
   --ns-accent: #1AFE00;
   --neon: #1AFE00;
   --neon-hi: #7DFF6B;
   --neon-lo: #0FB500;
   --neon-deep: #0B7A00;
-  --neu-hi: #F6F8EF;
-  --neu-lo: #DCE6CA;
-  --neu-edge: rgba(255, 255, 255, 0.95);
-  --neu-light: rgba(255, 255, 255, 0.9);
-  --neu-dark: rgba(52, 72, 36, 0.22);
+  --tile-hi: #202020;
+  --tile: #141414;
+  --tile-lo: #0B0B0B;
+  --felt-hi: #146A14;
+  --felt: #0B480B;
+  --felt-lo: #052E05;
+  /* Felt grain: one fine noise tile, laid under every plush surface. */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.95%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3CfeColorMatrix values=%220 0 0 0 0.6 0 0 0 0 0.6 0 0 0 0 0.6 0 0 0 0.9 0%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E");
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 @layer base {
@@ -101,10 +106,11 @@
     text-size-adjust: 100%;
     overflow-x: hidden;
     width: 100%;
+    background: #0A0A0A;
   }
   body {
-    background: #E6EED7;
-    color: #0B1A08;
+    background: #0A0A0A;
+    color: #F3F3F0;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -114,14 +120,29 @@
     width: 100%;
     min-height: 100dvh;
   }
+  /* The ground: a soft vignette with a few out of focus lights, like the
+     reference wallpaper. Fixed pseudo instead of background-attachment so
+     phones get it too. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(38% 30% at 18% 22%, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0) 100%),
+      radial-gradient(30% 26% at 82% 68%, rgba(26, 254, 0, 0.05) 0%, rgba(26, 254, 0, 0) 100%),
+      radial-gradient(24% 20% at 70% 14%, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0) 100%),
+      radial-gradient(110% 80% at 50% 40%, #151515 0%, #0C0C0C 55%, #060606 100%);
+  }
   button, a, [role="button"] { touch-action: manipulation; }
-  :focus-visible { outline: 2px solid #0B7A00; outline-offset: 3px; }
+  :focus-visible { outline: 2px solid #1AFE00; outline-offset: 3px; }
   img { max-width: 100%; height: auto; display: block; }
   section[id] { scroll-margin-top: calc(5.5rem + var(--live-h, 0px)); }
-  ::selection { background: #1AFE00; color: #0B1A08; }
+  ::selection { background: #1AFE00; color: #070707; }
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: rgba(11, 122, 0, 0.35); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb { background: rgba(26, 254, 0, 0.35); border-radius: 3px; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
@@ -160,12 +181,12 @@
     font-size: 0.7rem;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: #0B7A00;
+    color: #1AFE00;
   }
   .lead {
     font-size: clamp(1.05rem, 1.4vw, 1.25rem);
     line-height: 1.7;
-    color: rgba(11, 26, 8, 0.72);
+    color: rgba(243, 243, 240, 0.72);
   }
   .container-x {
     width: 100%;
@@ -179,78 +200,123 @@
   @media (min-width: 768px) { .section-pad { padding-block: 7rem; } }
   @media (min-width: 1280px) { .section-pad { padding-block: 8.5rem; } }
   .text-neon { color: #1AFE00; }
-  .text-neon-deep { color: #0B7A00; }
-  /* His wordmark treatment: neon fill with an ink outline, reads on cream. */
+  .text-neon-deep { color: #1AFE00; }
+  /* His wordmark treatment on black: neon fill, a hair of dark stroke so the
+     letters keep their edge over the glow, and the glow itself. */
   .text-neon-outline {
     color: #1AFE00;
-    -webkit-text-stroke: 0.035em #0B1A08;
+    -webkit-text-stroke: 0.012em rgba(0, 0, 0, 0.55);
     paint-order: stroke fill;
-    text-shadow: 0.04em 0.05em 0 rgba(11, 26, 8, 0.18);
+    text-shadow: 0 0 26px rgba(26, 254, 0, 0.32), 0 3px 0 rgba(0, 0, 0, 0.6);
   }
-  .neon-glow-text { text-shadow: 0 0 18px rgba(26, 254, 0, 0.35); }
+  /* Embroidered type: light thread on felt. */
+  .text-stitch {
+    color: #F3F3F0;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.12), 0 -1px 0 rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0, 0, 0, 0.6);
+  }
+  .neon-glow-text { text-shadow: 0 0 18px rgba(26, 254, 0, 0.4); }
   .grain::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22160%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E");
-    background-size: 160px 160px;
+    opacity: 0.07;
+    background-image: var(--grain);
+    background-size: 140px 140px;
   }
-  /* Section wash: a soft green cream block behind alternating sections */
+  /* Section wash: a low green light behind alternating sections */
   .wash {
-    background: linear-gradient(180deg, rgba(205, 248, 190, 0) 0%, rgba(205, 248, 190, 0.45) 18%, rgba(205, 248, 190, 0.45) 82%, rgba(205, 248, 190, 0) 100%);
+    background: radial-gradient(70% 60% at 50% 50%, rgba(26, 254, 0, 0.06) 0%, rgba(26, 254, 0, 0) 100%);
   }
 }
 
 /* ------------------------------------------------------------------
-   Soft 3D system, light. Raised cream surfaces with a white lit edge and
-   a green tinted lower shadow, inset wells for inputs, a neon raised
-   primary button, a cream raised secondary button. Unlayered on purpose.
+   Plush system, black. Felt tiles with a lit top edge, a deep lower
+   shadow, a fuzzy halo that bleeds the tile colour a few pixels past the
+   edge, and a grain overlay under the content. Unlayered on purpose so the
+   surface classes always win over utilities.
    ------------------------------------------------------------------ */
-.neu {
-  background: linear-gradient(145deg, var(--neu-hi) 0%, var(--neu-lo) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-top-color: rgba(255, 255, 255, 1);
-  border-bottom-color: rgba(52, 72, 36, 0.12);
-  border-radius: 1.75rem;
+.neu, .neu-sm, .neu-xs {
+  isolation: isolate;
+  color: #F3F3F0;
+  background: radial-gradient(150% 130% at 10% -12%, var(--tile-hi) 0%, var(--tile) 44%, var(--tile-lo) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.045);
+  border-top-color: rgba(255, 255, 255, 0.13);
+  border-bottom-color: rgba(0, 0, 0, 0.9);
   box-shadow:
-    inset 0 1px 0 var(--neu-edge),
-    10px 12px 28px var(--neu-dark),
-    -6px -6px 18px var(--neu-light);
+    0 0 0 1px #050505,
+    0 0 5px 3px rgba(19, 19, 19, 0.95),
+    0 0 12px 6px rgba(16, 16, 16, 0.55),
+    0 0 26px 10px rgba(14, 14, 14, 0.28),
+    0 30px 60px -24px rgba(0, 0, 0, 0.95);
 }
-.neu-sm {
-  background: linear-gradient(145deg, var(--neu-hi) 0%, var(--neu-lo) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-top-color: rgba(255, 255, 255, 1);
-  border-bottom-color: rgba(52, 72, 36, 0.12);
-  border-radius: 1.25rem;
-  box-shadow:
-    inset 0 1px 0 var(--neu-edge),
-    6px 8px 18px var(--neu-dark),
-    -4px -4px 12px var(--neu-light);
-}
-.neu-xs {
-  background: linear-gradient(145deg, var(--neu-hi) 0%, var(--neu-lo) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-top-color: rgba(255, 255, 255, 1);
-  border-bottom-color: rgba(52, 72, 36, 0.12);
-  border-radius: 0.875rem;
-  box-shadow:
-    inset 0 1px 0 var(--neu-edge),
-    4px 5px 12px var(--neu-dark),
-    -3px -3px 8px var(--neu-light);
-}
+.neu { border-radius: 1.75rem; }
+.neu-sm { border-radius: 1.25rem; }
+.neu-xs { border-radius: 0.875rem; }
 .neu-round { border-radius: 9999px; }
 .neu-sharp { border-radius: 0.25rem; }
-.neu-neon {
-  border-color: rgba(11, 122, 0, 0.22);
-  border-top-color: rgba(255, 255, 255, 1);
+/* Grain under the content, then the inner light and the inner shade. */
+.neu::before, .neu-sm::before, .neu-xs::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image: var(--grain);
+  background-size: 140px 140px;
+  opacity: 0.16;
+  mix-blend-mode: soft-light;
+}
+.neu::after, .neu-sm::after, .neu-xs::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
   box-shadow:
-    inset 0 1px 0 var(--neu-edge),
-    10px 12px 28px var(--neu-dark),
-    -6px -6px 18px var(--neu-light),
-    0 0 44px -10px rgba(26, 254, 0, 0.5);
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    inset 0 14px 30px -16px rgba(255, 255, 255, 0.07),
+    inset 0 -10px 22px -10px rgba(0, 0, 0, 0.8);
+}
+/* Lit by neon: the hero tiles. */
+.neu-neon {
+  border-top-color: rgba(26, 254, 0, 0.35);
+  box-shadow:
+    0 0 0 1px #050505,
+    0 0 5px 3px rgba(19, 19, 19, 0.95),
+    0 0 12px 6px rgba(16, 16, 16, 0.55),
+    0 0 26px 10px rgba(14, 14, 14, 0.28),
+    0 30px 60px -24px rgba(0, 0, 0, 0.95),
+    0 0 70px -14px rgba(26, 254, 0, 0.42);
+}
+.neu-neon::after {
+  box-shadow:
+    inset 0 1px 0 rgba(125, 255, 107, 0.22),
+    inset 0 18px 40px -20px rgba(26, 254, 0, 0.16),
+    inset 0 -10px 22px -10px rgba(0, 0, 0, 0.8);
+}
+/* Deep green felt: the second surface, his green in the fuzzy tile look. */
+.neu-green {
+  background: radial-gradient(150% 130% at 10% -12%, var(--felt-hi) 0%, var(--felt) 46%, var(--felt-lo) 100%);
+  border-color: rgba(26, 254, 0, 0.12);
+  border-top-color: rgba(125, 255, 107, 0.4);
+  border-bottom-color: rgba(0, 20, 0, 0.9);
+  box-shadow:
+    0 0 0 1px #032803,
+    0 0 5px 3px rgba(9, 70, 9, 0.9),
+    0 0 12px 6px rgba(8, 58, 8, 0.5),
+    0 0 26px 10px rgba(6, 46, 6, 0.25),
+    0 30px 60px -24px rgba(0, 0, 0, 0.95),
+    0 0 60px -14px rgba(26, 254, 0, 0.35);
+}
+.neu-green::before { opacity: 0.22; }
+.neu-green::after {
+  box-shadow:
+    inset 0 1px 0 rgba(125, 255, 107, 0.25),
+    inset 0 16px 34px -18px rgba(125, 255, 107, 0.18),
+    inset 0 -10px 22px -10px rgba(0, 30, 0, 0.75);
 }
 .neu-lift {
   transition: transform 0.35s var(--ease-out), box-shadow 0.35s ease, border-color 0.35s ease;
@@ -258,36 +324,135 @@
 @media (hover: hover) and (pointer: fine) {
   .neu-lift:hover {
     transform: translateY(-4px);
-    border-color: rgba(11, 122, 0, 0.25);
+    border-top-color: rgba(26, 254, 0, 0.45);
     box-shadow:
-      inset 0 1px 0 var(--neu-edge),
-      14px 18px 36px rgba(52, 72, 36, 0.28),
-      -6px -6px 18px var(--neu-light),
-      0 0 40px -12px rgba(26, 254, 0, 0.55);
+      0 0 0 1px #050505,
+      0 0 5px 3px rgba(19, 19, 19, 0.95),
+      0 0 12px 6px rgba(16, 16, 16, 0.55),
+      0 0 26px 10px rgba(14, 14, 14, 0.28),
+      0 36px 70px -26px rgba(0, 0, 0, 0.98),
+      0 0 60px -12px rgba(26, 254, 0, 0.5);
   }
+  .neu-green.neu-lift:hover {
+    box-shadow:
+      0 0 0 1px #032803,
+      0 0 5px 3px rgba(9, 70, 9, 0.9),
+      0 0 12px 6px rgba(8, 58, 8, 0.5),
+      0 0 26px 10px rgba(6, 46, 6, 0.25),
+      0 36px 70px -26px rgba(0, 0, 0, 0.98),
+      0 0 70px -12px rgba(26, 254, 0, 0.6);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Chrome rim: the glossy black button from the reference, as a panel.
+   .chrome is the polished rim, .chrome-face the black glass inside it with
+   the hard reflection across the top half.
+   ------------------------------------------------------------------ */
+.chrome {
+  padding: 3px;
+  border-radius: 2rem;
+  background:
+    linear-gradient(135deg, #FFFFFF 0%, #C9C9C9 9%, #5E5E5E 24%, #F4F4F4 44%, #6A6A6A 60%, #FFFFFF 76%, #7C7C7C 90%, #DCDCDC 100%);
+  box-shadow:
+    0 0 0 1px #000,
+    0 0 0 2px rgba(255, 255, 255, 0.06),
+    0 34px 70px -24px rgba(0, 0, 0, 0.98),
+    0 0 50px -14px rgba(255, 255, 255, 0.14);
+}
+.chrome-face {
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: calc(2rem - 3px);
+  color: #F3F3F0;
+  background: linear-gradient(180deg, #2A2A2A 0%, #161616 44%, #060606 50%, #0A0A0A 78%, #111111 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -30px 60px -30px rgba(0, 0, 0, 0.8);
+}
+.chrome-face::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 52% 0;
+  z-index: -1;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 60%, rgba(255, 255, 255, 0.025) 100%);
+}
+.chrome-sm { padding: 2px; border-radius: 1.25rem; }
+.chrome-sm > .chrome-face { border-radius: calc(1.25rem - 2px); }
+/* The little rim sparkles from the reference */
+.sparkle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  background:
+    linear-gradient(#fff, #fff) center / 2px 100% no-repeat,
+    linear-gradient(#fff, #fff) center / 100% 2px no-repeat;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
+  opacity: 0.9;
+}
+.sparkle::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background:
+    linear-gradient(#fff, #fff) center / 1px 100% no-repeat,
+    linear-gradient(#fff, #fff) center / 100% 1px no-repeat;
+  transform: rotate(45deg);
+  opacity: 0.6;
 }
 
 /* Inset wells: inputs */
 .neu-in {
-  background: linear-gradient(145deg, #DCE5CB 0%, #F1F5E8 100%);
-  border: 1px solid rgba(52, 72, 36, 0.06);
-  border-top-color: rgba(52, 72, 36, 0.14);
-  border-bottom-color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(180deg, #050505 0%, #0F0F0F 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top-color: rgba(0, 0, 0, 0.9);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
   border-radius: 9999px;
-  color: #0B1A08;
+  color: #F3F3F0;
   box-shadow:
-    inset 5px 5px 12px rgba(52, 72, 36, 0.16),
-    inset -3px -3px 8px rgba(255, 255, 255, 0.95);
+    inset 0 4px 10px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 4px rgba(255, 255, 255, 0.04);
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
-.neu-in::placeholder { color: rgba(11, 26, 8, 0.38); }
+.neu-in::placeholder { color: rgba(243, 243, 240, 0.35); }
 .neu-in:focus, .neu-in:focus-visible {
   outline: none;
-  border-color: rgba(11, 122, 0, 0.35);
+  border-color: rgba(26, 254, 0, 0.45);
   box-shadow:
-    inset 5px 5px 12px rgba(52, 72, 36, 0.16),
-    inset -3px -3px 8px rgba(255, 255, 255, 0.95),
-    0 0 0 2px rgba(26, 254, 0, 0.55);
+    inset 0 4px 10px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 4px rgba(255, 255, 255, 0.04),
+    0 0 0 2px rgba(26, 254, 0, 0.45),
+    0 0 24px -6px rgba(26, 254, 0, 0.6);
+}
+
+/* ------------------------------------------------------------------
+   Buttons. Every pill is fuzzy at the edge: the fill lives on ::before,
+   bleeds 2px past the box and runs through the fur filter that App.tsx
+   defines once. The element itself keeps the outer shadow and the type.
+   ------------------------------------------------------------------ */
+.btn3d, .btn3d-neon, .btn3d-chrome, .sticker, .chip-neon {
+  isolation: isolate;
+}
+/* Position lives in the components layer so an absolute or fixed utility on
+   the same element still wins (lightbox arrows, dialog close buttons). */
+@layer components {
+  .neu, .neu-sm, .neu-xs, .chrome, .chrome-face, .btn3d, .btn3d-neon, .btn3d-chrome, .sticker, .chip-neon { position: relative; }
+}
+.btn3d::before, .btn3d-neon::before, .btn3d-chrome::before, .sticker::before, .chip-neon::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  filter: url(#sb-fur);
 }
 
 /* Neon raised primary button */
@@ -303,42 +468,38 @@
   font-size: 0.8rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #0B1A08;
-  background: linear-gradient(180deg, var(--neon-hi) 0%, var(--neon) 46%, var(--neon-lo) 100%);
-  border: 1px solid rgba(11, 26, 8, 0.28);
-  border-top-color: rgba(255, 255, 255, 0.7);
+  color: #070707;
+  border: 0;
   border-radius: 9999px;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 -3px 0 rgba(0, 0, 0, 0.18),
-    0 12px 24px -8px rgba(26, 254, 0, 0.55),
-    7px 8px 18px rgba(52, 72, 36, 0.28),
-    -4px -4px 12px var(--neu-light);
+    0 14px 28px -10px rgba(26, 254, 0, 0.6),
+    0 18px 36px -14px rgba(0, 0, 0, 0.9);
   transition: transform 0.16s var(--ease-out), box-shadow 0.16s ease, filter 0.16s ease;
+}
+.btn3d-neon::before {
+  background: linear-gradient(180deg, var(--neon-hi) 0%, var(--neon) 46%, var(--neon-lo) 100%);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -4px 0 rgba(0, 0, 0, 0.22),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.25);
 }
 @media (hover: hover) and (pointer: fine) {
   .btn3d-neon:hover:not(:disabled) {
-    filter: brightness(1.05);
+    filter: brightness(1.06);
     transform: translateY(-1px);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.75),
-      inset 0 -3px 0 rgba(0, 0, 0, 0.18),
-      0 18px 30px -8px rgba(26, 254, 0, 0.65),
-      9px 10px 22px rgba(52, 72, 36, 0.32),
-      -4px -4px 12px var(--neu-light);
+      0 20px 36px -10px rgba(26, 254, 0, 0.7),
+      0 22px 40px -14px rgba(0, 0, 0, 0.9);
   }
 }
 .btn3d-neon:active:not(:disabled) {
   transform: translateY(1px) scale(0.985);
-  filter: brightness(0.96);
-  box-shadow:
-    inset 3px 4px 9px rgba(0, 0, 0, 0.28),
-    inset -2px -2px 6px rgba(255, 255, 255, 0.35),
-    2px 3px 8px rgba(52, 72, 36, 0.25);
+  filter: brightness(0.94);
+  box-shadow: 0 6px 14px -8px rgba(26, 254, 0, 0.5);
 }
 .btn3d-neon:disabled { opacity: 0.5; }
 
-/* Cream raised secondary button */
+/* Black plush secondary button */
 .btn3d {
   display: inline-flex;
   align-items: center;
@@ -351,42 +512,40 @@
   font-size: 0.8rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #0B1A08;
-  background: linear-gradient(145deg, #FFFFFF 0%, #E9EFDC 100%);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-top-color: rgba(255, 255, 255, 1);
-  border-bottom-color: rgba(52, 72, 36, 0.16);
+  color: #F3F3F0;
+  border: 0;
   border-radius: 9999px;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 1),
-    6px 7px 16px rgba(52, 72, 36, 0.22),
-    -4px -4px 10px var(--neu-light);
-  transition: transform 0.16s var(--ease-out), box-shadow 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+    0 0 0 1px #040404,
+    0 16px 32px -14px rgba(0, 0, 0, 0.95);
+  transition: transform 0.16s var(--ease-out), box-shadow 0.16s ease, color 0.16s ease;
+}
+.btn3d::before {
+  background: linear-gradient(180deg, #2A2A2A 0%, #181818 55%, #0E0E0E 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 @media (hover: hover) and (pointer: fine) {
   .btn3d:hover:not(:disabled) {
-    border-color: rgba(11, 122, 0, 0.35);
-    border-top-color: rgba(255, 255, 255, 1);
-    color: #0B7A00;
+    color: #1AFE00;
     transform: translateY(-1px);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 1),
-      8px 9px 20px rgba(52, 72, 36, 0.26),
-      -4px -4px 10px var(--neu-light),
-      0 0 30px -8px rgba(26, 254, 0, 0.45);
+      0 0 0 1px #040404,
+      0 18px 34px -14px rgba(0, 0, 0, 0.95),
+      0 0 30px -8px rgba(26, 254, 0, 0.5);
   }
 }
 .btn3d:active:not(:disabled) {
   transform: translateY(1px) scale(0.985);
-  box-shadow:
-    inset 3px 4px 9px rgba(52, 72, 36, 0.2),
-    inset -2px -2px 6px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 1px #040404, 0 6px 14px -10px rgba(0, 0, 0, 0.9);
 }
-.btn3d.is-on { color: #0B7A00; border-color: rgba(11, 122, 0, 0.35); }
+.btn3d.is-on { color: #1AFE00; }
 .btn3d-icon { width: 2.75rem; height: 2.75rem; min-height: 0; padding: 0; }
 
-/* Ink raised button (the dark one, for the shop cards and the strip) */
-.btn3d-ink {
+/* Chrome pill: white metal, black type, for the black glass panels */
+.btn3d-chrome {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -398,28 +557,27 @@
   font-size: 0.8rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #FFFFFF;
-  background: linear-gradient(145deg, #1d2a1a 0%, #0B1A08 100%);
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  border-top-color: rgba(255, 255, 255, 0.18);
+  color: #070707;
+  border: 0;
   border-radius: 9999px;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    7px 8px 18px rgba(52, 72, 36, 0.3),
-    -4px -4px 12px var(--neu-light);
+  box-shadow: 0 16px 32px -14px rgba(0, 0, 0, 0.95), 0 0 30px -12px rgba(255, 255, 255, 0.25);
   transition: transform 0.16s var(--ease-out), box-shadow 0.16s ease;
 }
-@media (hover: hover) and (pointer: fine) {
-  .btn3d-ink:hover:not(:disabled) { transform: translateY(-1px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 9px 10px 22px rgba(52,72,36,0.34), -4px -4px 12px var(--neu-light); }
+.btn3d-chrome::before {
+  background: linear-gradient(180deg, #FFFFFF 0%, #E6E6E6 48%, #BDBDBD 52%, #E9E9E9 100%);
+  box-shadow: inset 0 1px 0 #fff, inset 0 -3px 0 rgba(0, 0, 0, 0.18), inset 0 0 0 1px rgba(0, 0, 0, 0.3);
 }
-.btn3d-ink:active:not(:disabled) { transform: translateY(1px) scale(0.985); }
+@media (hover: hover) and (pointer: fine) {
+  .btn3d-chrome:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 18px 34px -14px rgba(0,0,0,0.95), 0 0 36px -10px rgba(255,255,255,0.35); }
+}
+.btn3d-chrome:active:not(:disabled) { transform: translateY(1px) scale(0.985); }
 
 /* Engraved rule */
 .groove {
   height: 2px;
   border: 0;
-  background: linear-gradient(90deg, transparent, rgba(52, 72, 36, 0.18) 20%, rgba(52, 72, 36, 0.18) 80%, transparent);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.9) 20%, rgba(0, 0, 0, 0.9) 80%, transparent);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
 /* Neon chip */
@@ -433,10 +591,11 @@
   font-weight: 900;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #0B7A00;
-  background: rgba(26, 254, 0, 0.16);
-  border: 1px solid rgba(11, 122, 0, 0.3);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 4px 12px -6px rgba(26, 254, 0, 0.6);
+  color: #1AFE00;
+}
+.chip-neon::before {
+  background: linear-gradient(180deg, #1E1E1E 0%, #101010 100%);
+  box-shadow: inset 0 1px 0 rgba(26, 254, 0, 0.35), inset 0 0 0 1px rgba(26, 254, 0, 0.18), inset 0 -2px 0 rgba(0, 0, 0, 0.6);
 }
 
 /* Sticker badge: the tilted pill */
@@ -450,17 +609,20 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   line-height: 1.35;
-  color: #0B1A08;
-  background: linear-gradient(180deg, var(--neon-hi), var(--neon) 55%, var(--neon-lo));
-  border: 1px solid rgba(11, 26, 8, 0.35);
-  border-top-color: rgba(255, 255, 255, 0.7);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 6px 8px 18px rgba(52,72,36,0.28), 0 0 26px -6px rgba(26,254,0,0.6);
+  color: #070707;
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.9), 0 0 26px -6px rgba(26, 254, 0, 0.55);
 }
-.sticker-cream {
-  background: linear-gradient(145deg, #FFFFFF 0%, #E9EFDC 100%);
-  border-color: rgba(255, 255, 255, 0.9);
-  border-bottom-color: rgba(52, 72, 36, 0.16);
-  box-shadow: inset 0 1px 0 #fff, 6px 8px 18px rgba(52,72,36,0.24);
+.sticker::before {
+  background: linear-gradient(180deg, var(--neon-hi), var(--neon) 55%, var(--neon-lo));
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.5), inset 0 -3px 0 rgba(0, 0, 0, 0.22), inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+.sticker-black {
+  color: #F3F3F0;
+  box-shadow: 0 0 0 1px #040404, 0 12px 24px -10px rgba(0, 0, 0, 0.9);
+}
+.sticker-black::before {
+  background: linear-gradient(180deg, #2A2A2A 0%, #161616 55%, #0D0D0D 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 -3px 0 rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 /* ------------------------------------------------------------------
@@ -493,8 +655,8 @@
   50% { transform: perspective(900px) rotateY(26deg) rotateX(-5deg); }
 }
 @keyframes sb-pulse-ring {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(26, 254, 0, 0.45), 0 30px 80px -20px rgba(52, 72, 36, 0.45); }
-  50% { box-shadow: 0 0 0 18px rgba(26, 254, 0, 0), 0 30px 80px -20px rgba(52, 72, 36, 0.45); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(26, 254, 0, 0.4), 0 0 0 1px #000, 0 34px 70px -24px rgba(0, 0, 0, 0.98); }
+  50% { box-shadow: 0 0 0 18px rgba(26, 254, 0, 0), 0 0 0 1px #000, 0 34px 70px -24px rgba(0, 0, 0, 0.98); }
 }
 @keyframes sb-marquee {
   0% { transform: translate3d(0, 0, 0); }
@@ -504,6 +666,10 @@
   0%, 100% { opacity: 1; }
   50% { opacity: 0.35; }
 }
+@keyframes sb-glow {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.06); }
+}
 .anim-float { animation: sb-float 6s ease-in-out infinite; }
 .anim-float-soft { animation: sb-float-soft 5s ease-in-out infinite; }
 .anim-spin-y { animation: sb-spin-y 14s linear infinite; transform-style: preserve-3d; }
@@ -511,6 +677,7 @@
 .anim-pulse-ring { animation: sb-pulse-ring 3.2s ease-in-out infinite; }
 .anim-marquee { animation: sb-marquee 28s linear infinite; }
 .anim-blink { animation: sb-blink 1.6s ease-in-out infinite; }
+.anim-glow { animation: sb-glow 4.5s ease-in-out infinite; }
 
 /* 3D tilt card: hover on fine pointers only */
 .tilt {
@@ -522,7 +689,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .anim-float, .anim-float-soft, .anim-spin-y, .anim-sway, .anim-pulse-ring, .anim-marquee, .anim-blink { animation: none; }
+  .anim-float, .anim-float-soft, .anim-spin-y, .anim-sway, .anim-pulse-ring, .anim-marquee, .anim-blink, .anim-glow { animation: none; }
   .reveal { transition-duration: 0.2s; transform: none; }
   .tilt:hover { transform: none; }
 }
@@ -530,7 +697,7 @@
 /* The live strip: neon bar with ink type */
 .live-strip {
   background: linear-gradient(180deg, #7DFF6B 0%, #1AFE00 55%, #12D400 100%);
-  border-bottom: 1px solid rgba(11, 26, 8, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
   box-shadow: 0 8px 30px -12px rgba(26, 254, 0, 0.8);
   overflow: hidden;
 }
@@ -550,23 +717,41 @@
   .live-strip::before { animation: none; }
 }
 
+/* The nav pill once the page has scrolled: plush, a touch see through */
+.nav-pill {
+  background: linear-gradient(180deg, rgba(34, 34, 34, 0.92) 0%, rgba(16, 16, 16, 0.92) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 0 0 1px #050505,
+    0 0 6px 3px rgba(18, 18, 18, 0.9),
+    0 18px 40px -16px rgba(0, 0, 0, 0.95);
+}
+
 /* Phone tab bar, flush to the bottom edge */
 .tabbar {
-  background: linear-gradient(180deg, #F6F8EF 0%, #E9EFDC 100%);
-  border-top: 1px solid rgba(255, 255, 255, 1);
-  box-shadow: 0 -12px 30px -10px rgba(52, 72, 36, 0.3), inset 0 1px 0 #fff;
+  background: linear-gradient(180deg, #1A1A1A 0%, #0C0C0C 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 -16px 40px -10px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 .tab-live {
   background: linear-gradient(180deg, var(--neon-hi) 0%, var(--neon) 50%, var(--neon-lo) 100%);
-  border: 3px solid #E6EED7;
+  border: 3px solid #0A0A0A;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 -3px 0 rgba(0, 0, 0, 0.18),
-    0 10px 24px -6px rgba(26, 254, 0, 0.7),
-    0 8px 18px rgba(52, 72, 36, 0.3);
+    inset 0 2px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 12px 28px -6px rgba(26, 254, 0, 0.7),
+    0 10px 20px rgba(0, 0, 0, 0.7);
   transition: transform 0.16s var(--ease-out);
 }
 .tab-live:active { transform: translateY(1px) scale(0.97); }
+
+/* Light photo well: product shots come on white, so the well stays light */
+.well-light {
+  background: linear-gradient(180deg, #F6F6F4 0%, #E9E9E6 100%);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
 
 /* Hide scrollbars on chip rows */
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }

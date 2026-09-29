@@ -25,9 +25,10 @@ export function About() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8">
           {/* Character */}
           <Reveal className="order-2 md:order-1 md:col-span-4 lg:col-span-4">
-            <div className="neu relative mx-auto flex max-w-xs items-end justify-center overflow-hidden px-6 pt-10 md:max-w-none">
+            {/* The character gets the whole tile to himself; the stickers sit under it. */}
+            <div className="neu relative mx-auto flex max-w-xs items-end justify-center overflow-hidden px-8 pt-14 md:max-w-none">
               <div
-                className="absolute inset-x-8 bottom-6 h-10 rounded-[100%] bg-neon/50 blur-xl"
+                className="anim-glow absolute inset-x-8 bottom-6 h-12 rounded-[100%] bg-neon/45 blur-xl"
                 aria-hidden="true"
               />
               <img
@@ -37,11 +38,13 @@ export function About() {
                 height={1623}
                 loading="lazy"
                 decoding="async"
-                className="anim-float-soft relative h-auto w-[62%] max-w-[240px] drop-shadow-[0_30px_40px_rgba(0,0,0,0.7)]"
+                className="anim-float-soft relative h-auto w-[58%] max-w-[230px] drop-shadow-[0_30px_40px_rgba(0,0,0,0.9)]"
               />
-              <span className="sticker absolute left-4 top-4 rotate-[-6deg]">Est. {brand.founded}</span>
-              <span className="sticker absolute right-4 top-4 rotate-[5deg] !bg-white">Hilton Head, SC</span>
               <div className="groove absolute inset-x-6 bottom-0" aria-hidden="true" />
+            </div>
+            <div className="mx-auto mt-6 flex max-w-xs flex-wrap items-center justify-center gap-4 md:max-w-none">
+              <span className="sticker rotate-[-3deg]">Est. {brand.founded}</span>
+              <span className="sticker sticker-black rotate-[2deg]">Hilton Head, SC</span>
             </div>
           </Reveal>
 
@@ -50,10 +53,10 @@ export function About() {
             <div className="space-y-5">
               {about.paragraphs.map((p, i) => (
                 <Reveal key={i} index={i} as="div">
-                  <p className={i === 0 ? "lead text-ink/85" : "text-base leading-[1.75] text-ink/70 sm:text-lg"}>
+                  <p className={i === 0 ? "lead text-fg/85" : "text-base leading-[1.75] text-fg/70 sm:text-lg"}>
                     {i === 0 ? (
                       <>
-                        <span className="font-display text-neon-deep text-[0.85em] uppercase tracking-wide">{brand.name}</span>
+                        <span className="font-display text-neon text-[0.85em] uppercase tracking-wide">{brand.name}</span>
                         {p.slice(brand.name.length)}
                       </>
                     ) : (
@@ -65,7 +68,7 @@ export function About() {
             </div>
 
             <Reveal index={3} className="mt-8">
-              <blockquote className="neu-sm neu-neon relative px-6 py-6 sm:px-8">
+              <blockquote className="neu-sm neu-green relative px-6 py-6 sm:px-8">
                 <img
                   src="/brand/star-smiley.webp"
                   alt=""
@@ -74,10 +77,10 @@ export function About() {
                   loading="lazy"
                   className="absolute -top-5 right-6 h-12 w-12 rotate-12 drop-shadow-[0_0_14px_rgba(26,254,0,0.6)]"
                 />
-                <p className="font-display text-[0.95rem] font-bold uppercase leading-[1.5] tracking-wide text-ink sm:text-lg">
+                <p className="font-display text-[0.95rem] font-bold uppercase leading-[1.5] tracking-wide text-fg sm:text-lg">
                   {brand.name} is music, it&rsquo;s fashion, it&rsquo;s a lifestyle.
                 </p>
-                <p className="mt-2 font-display text-neon-deep neon-glow-text text-sm font-extrabold uppercase tracking-[0.2em] sm:text-base">
+                <p className="mt-2 font-display text-neon neon-glow-text text-sm font-extrabold uppercase tracking-[0.2em] sm:text-base">
                   {brand.tagline}
                 </p>
               </blockquote>
@@ -89,15 +92,15 @@ export function About() {
                 <Reveal key={m.title} index={i} as="li" className="min-w-0">
                   <div className="neu-xs neu-lift h-full px-5 py-4">
                     <p className="eyebrow !text-[0.7rem]">{m.year}</p>
-                    <p className="font-display mt-1 text-[0.8rem] font-bold uppercase leading-tight text-ink">{m.title}</p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-ink/72">{m.body}</p>
+                    <p className="font-display mt-1 text-[0.8rem] font-bold uppercase leading-tight text-fg">{m.title}</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-fg/72">{m.body}</p>
                   </div>
                 </Reveal>
               ))}
             </ol>
 
             <Reveal index={2} className="mt-8">
-              <p className="eyebrow mb-3 !text-ink/50">Inspired by</p>
+              <p className="eyebrow mb-3 !text-fg/50">Inspired by</p>
               <ul className="flex flex-wrap gap-2">
                 {about.influences.map((n) => (
                   <li key={n} className="chip-neon !normal-case !tracking-[0.08em] !text-[0.72rem]">

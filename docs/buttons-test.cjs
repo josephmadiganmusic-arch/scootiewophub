@@ -197,7 +197,7 @@ async function run(mobile) {
   await page.waitForTimeout(400);
 
   // Featured Buy now -> sheet
-  const featBuy = panel.locator("article.bg-ink button", { hasText: "Buy now" });
+  const featBuy = panel.locator("article.chrome button", { hasText: "Buy now" });
   await featBuy.evaluate((el) => el.scrollIntoView({ block: "center" }));
   await page.waitForTimeout(200);
   try { await tapOrClick(page, featBuy, mobile); } catch (e) { bad(`${label} featured Buy now`, String(e).split("\n")[0]); }

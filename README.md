@@ -39,8 +39,9 @@ The site is an installable web app. `public/manifest.webmanifest` names it, `pub
 
 ## Design notes
 
-- Light cream ground with his green: cream `#F2F4EA`, ink `#0B1A08` for writing, neon `#1AFE00` for fills and highlights, deep green `#0B7A00` for accent text so it reads on cream. Big display words in neon use the outlined wordmark treatment (`.text-neon-outline`).
+- Black velvet ground (`#0A0A0A` with a soft vignette), white type, neon `#1AFE00` for glyphs, buttons and highlights. Surfaces: plush black felt tiles (`.neu`, `.neu-sm`, `.neu-xs`, grain plus a fuzzy halo), deep green felt tiles (`.neu-green`) as the second surface, and chrome rimmed black glass panels (`.chrome` > `.chrome-face`) for the hero moments. Every pill and chip runs its fill through the `#sb-fur` SVG filter defined in `App.tsx`, which gives the fuzzy edge. Big display words in neon use `.text-neon-outline`.
 
+- Share image: `NODE_PATH=C:/Users/jocej/pw-temp/node_modules node docs/og-image.cjs` renders `public/og.jpg` from `docs/og-image.html` with the site fonts embedded.
 - Raised surfaces use the `.neu` classes, buttons use `.btn3d` and `.btn3d-neon`. These are unlayered CSS, so responsive `hidden` utilities go on a wrapper element, not on the button.
 - Infinite motion is CSS keyframes only. Scroll reveals are transitions driven by an IntersectionObserver.
 - The hero background is the ChromaTide WebGL shader in `src/components/ui/background-gradient-shader.tsx`, tinted with the brand green. It renders nothing where WebGL is missing, so the page still reads.

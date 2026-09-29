@@ -47,7 +47,7 @@ export function Nav() {
           className={cn(
             "pointer-events-auto flex h-14 items-center justify-between gap-3 rounded-full px-3 pr-2 transition-[background-color,box-shadow,border-color] duration-300 sm:h-16 sm:px-4 sm:pr-2.5",
             scrolled || open
-              ? "neu-sm neu-round backdrop-blur-xl"
+              ? "nav-pill rounded-full backdrop-blur-xl"
               : "border border-transparent bg-transparent",
           )}
         >
@@ -71,7 +71,7 @@ export function Nav() {
             <span className="font-display hidden truncate text-[0.7rem] font-extrabold uppercase leading-[1.1] tracking-[0.08em] min-[360px]:block sm:text-[0.72rem]">
               Starrbaby
               <br />
-              <span className="text-neon-deep">Wrldwide</span>
+              <span className="text-neon">Wrldwide</span>
             </span>
           </a>
 
@@ -83,7 +83,7 @@ export function Nav() {
                 onClick={() => go(n.id)}
                 className={cn(
                   "group relative rounded-full px-3 py-2 text-[0.72rem] font-bold uppercase tracking-[0.18em] transition-colors duration-200",
-                  active === n.id ? "text-ink" : "text-ink/50 hover:text-ink",
+                  active === n.id ? "text-fg" : "text-fg/50 hover:text-fg",
                 )}
                 aria-current={active === n.id ? "true" : undefined}
               >

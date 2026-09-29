@@ -60,7 +60,7 @@ export function ProductSheet({ product, onClose }: Props) {
     <div className="fixed inset-0 z-[80] flex items-end justify-center sm:items-center sm:p-4" role="presentation">
       <button
         type="button"
-        className="absolute inset-0 bg-ink/45 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/75 backdrop-blur-sm"
         aria-label="Close product"
         onClick={onClose}
       />
@@ -69,16 +69,19 @@ export function ProductSheet({ product, onClose }: Props) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="sheet-title"
-        className="relative flex max-h-[94svh] w-full max-w-4xl flex-col overflow-hidden rounded-t-[2rem] bg-white text-ink shadow-[0_-20px_60px_rgba(0,0,0,0.6)] sm:rounded-[2rem] sm:shadow-[0_30px_90px_rgba(0,0,0,0.8)]"
-        style={{ animation: "sheet-in 0.32s cubic-bezier(0.32, 0.72, 0, 1)" }}
+        className="relative flex max-h-[94svh] w-full max-w-4xl flex-col overflow-hidden rounded-t-[2rem] border border-white/10 bg-[#121212] text-fg shadow-[0_-20px_60px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.12)] sm:rounded-[2rem] sm:shadow-[0_30px_90px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(255,255,255,0.12)]"
+        style={{
+          animation: "sheet-in 0.32s cubic-bezier(0.32, 0.72, 0, 1)",
+          backgroundImage: "radial-gradient(150% 130% at 10% -12%, #1F1F1F 0%, #141414 44%, #0C0C0C 100%)",
+        }}
       >
         <style>{`@keyframes sheet-in { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: none; } } @media (prefers-reduced-motion: reduce) { @keyframes sheet-in { from { opacity: 0 } to { opacity: 1 } } }`}</style>
 
         <div className="flex items-center justify-between px-4 pt-4 sm:px-6 sm:pt-5">
           <span className="sm:hidden" aria-hidden="true">
-            <span className="block h-1.5 w-10 rounded-full bg-black/15" />
+            <span className="block h-1.5 w-10 rounded-full bg-white/20" />
           </span>
-          <span className="hidden text-[0.7rem] font-extrabold uppercase tracking-[0.16em] text-ink/50 sm:inline-flex">
+          <span className="hidden text-[0.7rem] font-extrabold uppercase tracking-[0.16em] text-fg/50 sm:inline-flex">
             STARRBABY shop
           </span>
           <button
@@ -86,7 +89,7 @@ export function ProductSheet({ product, onClose }: Props) {
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-ink transition-colors hover:bg-ink hover:text-white"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-fg transition-colors hover:bg-neon hover:text-ink"
           >
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -95,7 +98,7 @@ export function ProductSheet({ product, onClose }: Props) {
         <div className="grid flex-1 grid-cols-1 gap-6 overflow-y-auto px-4 pb-6 pt-3 sm:grid-cols-2 sm:px-6 sm:pb-8">
           {/* Product on the pedestal */}
           <div className="flex gap-3">
-            <div className="relative flex min-w-0 flex-1 items-center justify-center overflow-hidden rounded-[1.5rem] bg-[#f3f4f2] p-4 sm:min-h-[26rem]">
+            <div className="well-light relative flex min-w-0 flex-1 items-center justify-center overflow-hidden rounded-[1.5rem] p-4 sm:min-h-[26rem]">
               <div
                 className="pointer-events-none absolute bottom-[12%] left-1/2 h-8 w-[68%] -translate-x-1/2 rounded-[100%] border-[3px] border-neon/70"
                 style={{ boxShadow: "0 0 30px rgba(26,254,0,0.35), inset 0 0 20px rgba(26,254,0,0.15)" }}
@@ -125,8 +128,8 @@ export function ProductSheet({ product, onClose }: Props) {
                       aria-label={im.alt}
                       aria-pressed={img === i}
                       className={cn(
-                        "block h-14 w-14 overflow-hidden rounded-xl border-2 bg-[#f3f4f2] transition-colors",
-                        img === i ? "border-ink" : "border-transparent hover:border-black/30",
+                        "well-light block h-14 w-14 overflow-hidden rounded-xl border-2 transition-colors",
+                        img === i ? "border-neon" : "border-transparent hover:border-white/40",
                       )}
                     >
                       <img src={im.src} alt="" width={112} height={112} loading="lazy" className="h-full w-full object-cover" />
@@ -140,18 +143,18 @@ export function ProductSheet({ product, onClose }: Props) {
           {/* Details */}
           <div className="flex flex-col">
             <div className="flex flex-wrap gap-2">
-              {product.isNew ? <span className="rounded-full bg-ink px-2.5 py-1 text-[0.7rem] font-extrabold uppercase tracking-[0.14em] text-neon">New</span> : null}
-              <span className="rounded-full bg-neon px-2.5 py-1 text-[0.7rem] font-extrabold uppercase tracking-[0.14em] text-ink">{product.collection} collection</span>
+              {product.isNew ? <span className="rounded-full bg-neon px-2.5 py-1 text-[0.7rem] font-extrabold uppercase tracking-[0.14em] text-ink">New</span> : null}
+              <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[0.7rem] font-extrabold uppercase tracking-[0.14em] text-fg/80">{product.collection} collection</span>
             </div>
-            <h2 id="sheet-title" className="font-display mt-3 text-xl font-extrabold uppercase leading-tight sm:text-2xl">
+            <h2 id="sheet-title" className="font-display text-stitch mt-3 text-xl font-extrabold uppercase leading-tight sm:text-2xl">
               {product.name}
             </h2>
-            <p className="mt-1 text-sm text-ink/55">{product.details.join(" · ")}</p>
-            <p className="mt-3 text-sm leading-relaxed text-ink/75">{product.blurb}</p>
+            <p className="mt-1 text-sm text-fg/55">{product.details.join(" · ")}</p>
+            <p className="mt-3 text-sm leading-relaxed text-fg/75">{product.blurb}</p>
 
             <div className="mt-5 flex items-center justify-between">
               <p className="text-[0.7rem] font-extrabold uppercase tracking-[0.16em]">Select size</p>
-              <a href={productUrl(product)} target="_blank" rel="noopener" className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-ink/55 underline underline-offset-4 hover:text-ink">
+              <a href={productUrl(product)} target="_blank" rel="noopener" className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-fg/55 underline underline-offset-4 hover:text-neon">
                 Size guide
               </a>
             </div>
@@ -167,7 +170,9 @@ export function ProductSheet({ product, onClose }: Props) {
                     onClick={() => setSize(s)}
                     className={cn(
                       "flex h-11 min-w-11 items-center justify-center rounded-full border px-3 text-xs font-extrabold transition-[background-color,color,border-color,transform] duration-150",
-                      on ? "border-ink bg-ink text-neon" : "border-black/10 bg-[#f3f4f2] text-ink hover:border-ink",
+                      on
+                        ? "border-neon bg-neon text-ink shadow-[0_8px_18px_-8px_rgba(26,254,0,0.8)]"
+                        : "border-white/10 bg-white/5 text-fg hover:border-neon/60",
                     )}
                   >
                     {s}
@@ -179,12 +184,12 @@ export function ProductSheet({ product, onClose }: Props) {
             <div className="mt-5 flex items-end justify-between gap-4">
               <div>
                 <p className="text-[0.7rem] font-extrabold uppercase tracking-[0.16em]">Qty</p>
-                <div className="mt-2 inline-flex h-11 items-center rounded-full bg-[#f3f4f2]">
+                <div className="mt-2 inline-flex h-11 items-center rounded-full border border-white/10 bg-white/5">
                   <button
                     type="button"
                     onClick={() => setQty((n) => Math.max(1, n - 1))}
                     aria-label="Decrease quantity"
-                    className="flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:bg-black/5 disabled:opacity-30"
+                    className="flex h-11 w-11 items-center justify-center rounded-full text-fg transition-colors hover:bg-white/10 disabled:opacity-30"
                     disabled={qty <= 1}
                   >
                     <Minus className="h-4 w-4" aria-hidden="true" />
@@ -196,7 +201,7 @@ export function ProductSheet({ product, onClose }: Props) {
                     type="button"
                     onClick={() => setQty((n) => Math.min(10, n + 1))}
                     aria-label="Increase quantity"
-                    className="flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:bg-black/5 disabled:opacity-30"
+                    className="flex h-11 w-11 items-center justify-center rounded-full text-fg transition-colors hover:bg-white/10 disabled:opacity-30"
                     disabled={qty >= 10}
                   >
                     <Plus className="h-4 w-4" aria-hidden="true" />
@@ -204,8 +209,8 @@ export function ProductSheet({ product, onClose }: Props) {
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-ink/55">Total price</p>
-                <p className="font-display text-2xl font-extrabold leading-none">{money(total)}</p>
+                <p className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-fg/55">Total price</p>
+                <p className="font-display text-2xl font-extrabold leading-none text-neon">{money(total)}</p>
               </div>
             </div>
 
@@ -214,7 +219,7 @@ export function ProductSheet({ product, onClose }: Props) {
                 href={addToBagUrl(variant, qty)}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex h-14 items-center justify-center gap-2.5 rounded-full bg-ink text-[0.78rem] font-extrabold uppercase tracking-[0.16em] text-white transition-[transform,box-shadow] duration-150 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-12px_rgba(0,0,0,0.7)] active:translate-y-0"
+                className="inline-flex h-14 items-center justify-center gap-2.5 rounded-full bg-neon text-[0.78rem] font-extrabold uppercase tracking-[0.16em] text-ink shadow-[inset_0_2px_0_rgba(255,255,255,0.5),inset_0_-3px_0_rgba(0,0,0,0.2),0_14px_30px_-12px_rgba(26,254,0,0.8)] transition-[transform,filter] duration-150 hover:-translate-y-0.5 hover:brightness-105 active:translate-y-0"
               >
                 <ShoppingBag className="h-4 w-4" aria-hidden="true" />
                 Add to bag · {size} · {money(total)}
@@ -223,11 +228,11 @@ export function ProductSheet({ product, onClose }: Props) {
                 href={buyNowUrl(variant, qty)}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-full border-2 border-ink bg-neon text-[0.72rem] font-extrabold uppercase tracking-[0.16em] text-ink transition-transform duration-150 hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-full border-2 border-neon bg-transparent text-[0.72rem] font-extrabold uppercase tracking-[0.16em] text-neon transition-[transform,background-color] duration-150 hover:-translate-y-0.5 hover:bg-neon/10 active:translate-y-0"
               >
                 Buy now, straight to checkout
               </a>
-              <p className="text-center text-[0.7rem] text-ink/45">Checkout runs on the STARRBABY shop. Opens in a new tab.</p>
+              <p className="text-center text-[0.7rem] text-fg/45">Checkout runs on the STARRBABY shop. Opens in a new tab.</p>
             </div>
           </div>
         </div>

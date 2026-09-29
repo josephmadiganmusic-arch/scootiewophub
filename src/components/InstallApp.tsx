@@ -49,7 +49,7 @@ export function InstallApp({ compact = false, className }: { compact?: boolean; 
 
   const steps: ReactNode[] = iosSafari
     ? [
-        <>Tap the share button <Share className="-mt-0.5 inline h-3.5 w-3.5 text-neon-deep" aria-hidden="true" /> at the bottom of Safari.</>,
+        <>Tap the share button <Share className="-mt-0.5 inline h-3.5 w-3.5 text-neon" aria-hidden="true" /> at the bottom of Safari.</>,
         <>Scroll down and tap <strong>Add to Home Screen</strong>.</>,
         <>Tap <strong>Add</strong>. STARRBABY lands on your home screen.</>,
       ]
@@ -94,14 +94,14 @@ export function InstallApp({ compact = false, className }: { compact?: boolean; 
         aria-label="Add STARRBABY WRLDWIDE as an app on your phone"
         className={cn("btn3d whitespace-nowrap !min-h-10 !py-2", compact ? "!px-3 !text-[0.7rem]" : "!px-4 !text-[0.7rem]", className)}
       >
-        <Smartphone className="h-4 w-4 text-neon-deep" aria-hidden="true" />
+        <Smartphone className="h-4 w-4 text-neon" aria-hidden="true" />
         <span>{compact ? "App" : "Add as app"}</span>
       </button>
 
       {/* Portalled to body: the button lives in the fixed nav, whose backdrop blur would trap a fixed sheet inside the bar. */}
       {open &&
         createPortal(
-          <div className="fixed inset-0 z-[95] flex items-end justify-center bg-ink/45 p-4 backdrop-blur-sm sm:items-center" onClick={() => setOpen(false)}>
+          <div className="fixed inset-0 z-[95] flex items-end justify-center bg-black/70 p-4 backdrop-blur-sm sm:items-center" onClick={() => setOpen(false)}>
             <div
               role="dialog"
               aria-modal="true"
@@ -113,18 +113,18 @@ export function InstallApp({ compact = false, className }: { compact?: boolean; 
                 <X className="h-4 w-4" aria-hidden="true" />
               </button>
               <img src="/icons/icon-192.png" alt="" width={72} height={72} className="neu-xs mx-auto mb-4 h-[72px] w-[72px] p-1.5" />
-              <h3 id="install-title" className="font-display text-lg font-extrabold uppercase leading-tight text-ink">
+              <h3 id="install-title" className="font-display text-lg font-extrabold uppercase leading-tight text-fg">
                 Add STARRBABY to your home screen
               </h3>
-              <ol className="mt-5 list-none space-y-3 text-left text-sm text-ink/75">
+              <ol className="mt-5 list-none space-y-3 text-left text-sm text-fg/75">
                 {steps.map((s, i) => (
                   <li key={i} className="flex gap-3">
-                    <span className="neu-xs neu-round flex h-7 w-7 shrink-0 items-center justify-center text-[11px] font-black text-neon-deep">{i + 1}</span>
+                    <span className="neu-xs neu-round flex h-7 w-7 shrink-0 items-center justify-center text-[11px] font-black text-neon">{i + 1}</span>
                     <span className="pt-1">{s}</span>
                   </li>
                 ))}
               </ol>
-              <p className="mt-5 text-xs text-ink/50">{coarse ? "It opens full screen, with no browser bar." : "It opens in its own window, with no browser bar."}</p>
+              <p className="mt-5 text-xs text-fg/50">{coarse ? "It opens full screen, with no browser bar." : "It opens in its own window, with no browser bar."}</p>
             </div>
           </div>,
           document.body,

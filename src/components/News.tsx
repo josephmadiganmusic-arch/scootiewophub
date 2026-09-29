@@ -50,7 +50,7 @@ export function News({ live: liveNow = false }: { live?: boolean }) {
                 <div className="relative">
                   <div className="flex flex-wrap items-center gap-2">
                     {liveNow ? (
-                      <span className="chip-neon !border-[#ff3b3b]/50 !bg-[#ff3b3b]/15 !text-ink">
+                      <span className="chip-neon !text-[#ff5a5a]">
                         <span className="relative flex h-2 w-2" aria-hidden="true">
                           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#ff3b3b] opacity-70" />
                           <span className="relative inline-flex h-2 w-2 rounded-full bg-[#ff3b3b]" />
@@ -63,24 +63,24 @@ export function News({ live: liveNow = false }: { live?: boolean }) {
                         {kindLabel[e.kind]}
                       </span>
                     )}
-                    {e.recurring ? <span className="chip-neon !border-ink/15 !bg-ink/5 !text-ink/70">Weekly</span> : null}
+                    {e.recurring ? <span className="chip-neon !text-fg/70">Weekly</span> : null}
                   </div>
-                  <h3 className="font-display mt-5 text-2xl font-extrabold uppercase leading-[1] text-ink sm:text-4xl">
+                  <h3 className="font-display mt-5 text-2xl font-extrabold uppercase leading-[1] text-fg sm:text-4xl">
                     {e.title}
                   </h3>
-                  <dl className="mt-5 grid grid-cols-1 gap-3 text-sm text-ink/70 sm:grid-cols-2">
+                  <dl className="mt-5 grid grid-cols-1 gap-3 text-sm text-fg/70 sm:grid-cols-2">
                     <div className="flex items-center gap-2.5">
-                      <CalendarDays className="h-4 w-4 shrink-0 text-neon-deep" aria-hidden="true" />
+                      <CalendarDays className="h-4 w-4 shrink-0 text-neon" aria-hidden="true" />
                       <dt className="sr-only">When</dt>
                       <dd>{e.when}</dd>
                     </div>
                     <div className="flex items-center gap-2.5">
-                      <Radio className="h-4 w-4 shrink-0 text-neon-deep" aria-hidden="true" />
+                      <Radio className="h-4 w-4 shrink-0 text-neon" aria-hidden="true" />
                       <dt className="sr-only">Where</dt>
                       <dd>{e.where}</dd>
                     </div>
                   </dl>
-                  <p className="mt-4 max-w-md text-sm leading-relaxed text-ink/60">
+                  <p className="mt-4 max-w-md text-sm leading-relaxed text-fg/60">
                     Scootie reacts to fan submitted songs live. A 10 out of 10 takes the STARR WARS champion tile. Hold
                     it four weeks and the STARRBUCKS pot pays out.
                   </p>
@@ -102,18 +102,18 @@ export function News({ live: liveNow = false }: { live?: boolean }) {
                 href={brand.referralUrl}
                 target="_blank"
                 rel="noopener"
-                className="neu-sm neu-lift mt-4 flex items-center gap-4 px-5 py-4"
+                className="neu-sm neu-green neu-lift mt-4 flex items-center gap-4 px-5 py-4"
               >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neon text-ink">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-neon shadow-[0_0_18px_-4px_rgba(26,254,0,0.7)]">
                   <Sparkles className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="font-display block text-[0.8rem] font-bold uppercase leading-tight text-ink">
+                  <span className="font-display block text-[0.8rem] font-bold uppercase leading-tight text-fg">
                     Want your own Rollout Live page?
                   </span>
-                  <span className="mt-1 block text-sm text-ink/65">Start it through Scootie&rsquo;s link.</span>
+                  <span className="mt-1 block text-sm text-fg/85">Start it through Scootie&rsquo;s link.</span>
                 </span>
-                <ArrowUpRight className="h-5 w-5 shrink-0 text-neon-deep" aria-hidden="true" />
+                <ArrowUpRight className="h-5 w-5 shrink-0 text-neon" aria-hidden="true" />
               </a>
             </Reveal>
           ))}
@@ -125,15 +125,15 @@ export function News({ live: liveNow = false }: { live?: boolean }) {
                 <div className="neu flex h-full flex-col items-start justify-between gap-6 p-6 sm:p-8">
                   <div>
                     <p className="eyebrow">Next up</p>
-                    <h3 className="font-display mt-3 text-xl font-extrabold uppercase leading-tight text-ink sm:text-2xl">
+                    <h3 className="font-display mt-3 text-xl font-extrabold uppercase leading-tight text-fg sm:text-2xl">
                       Nothing on the calendar yet
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-ink/60">
+                    <p className="mt-3 text-sm leading-relaxed text-fg/60">
                       Shows and pop ups land here the moment they get booked. Join the list and you hear first.
                     </p>
                   </div>
                   <div className="flex w-full items-center gap-3">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neon/10 text-neon-deep">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neon/10 text-neon">
                       <MapPin className="h-5 w-5" aria-hidden="true" />
                     </span>
                     <button type="button" className="btn3d-neon flex-1" onClick={() => go("signup")}>
@@ -150,9 +150,9 @@ export function News({ live: liveNow = false }: { live?: boolean }) {
                       <span className="eyebrow !text-[0.7rem]">{kindLabel[e.kind]}</span>
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h3 className="font-display text-base font-bold uppercase leading-tight text-ink">{e.title}</h3>
-                      <p className="mt-1 text-sm text-ink/65">{e.when}</p>
-                      <p className="text-sm text-ink/45">{e.where}</p>
+                      <h3 className="font-display text-base font-bold uppercase leading-tight text-fg">{e.title}</h3>
+                      <p className="mt-1 text-sm text-fg/65">{e.when}</p>
+                      <p className="text-sm text-fg/45">{e.where}</p>
                     </div>
                     {e.url ? (
                       <a href={e.url} target="_blank" rel="noopener" className="btn3d btn3d-icon shrink-0" aria-label={e.cta ?? "Details"}>
