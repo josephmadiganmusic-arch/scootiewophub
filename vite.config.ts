@@ -1,0 +1,19 @@
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import path from "path";
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: { "@": path.resolve(import.meta.dirname, "src") },
+  },
+  server: { port: 5180, host: "0.0.0.0" },
+  preview: { port: 5180, host: "0.0.0.0" },
+  build: {
+    outDir: "dist",
+    rollupOptions: {
+      output: { manualChunks: { vendor: ["react", "react-dom"] } },
+    },
+  },
+});
