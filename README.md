@@ -29,6 +29,10 @@ Drunk Wide is the display face and it is a licensed font. Put the files at `publ
 
 Set `VITE_SIGNUP_ENDPOINT` in a `.env` file to a URL that accepts a JSON POST of `{ email, source }` (Formspree, Resend, an n8n webhook). Without it the form hands off to the STARRBABY FAMILY page on Symphony.
 
+## Deploy
+
+Railway project `hospitable-kindness`, service `scootiewophub`, connected to this GitHub repo. Every push to `main` builds with Railpack, which detects the Vite static site, runs `pnpm build`, and serves `dist/` with Caddy. There is no server code, no database and no uploads, so the service needs no volume and no environment variables beyond the optional `VITE_SIGNUP_ENDPOINT`. Public URL until a domain is attached: https://scootiewophub-production.up.railway.app
+
 ## Design notes
 
 - Raised surfaces use the `.neu` classes, buttons use `.btn3d` and `.btn3d-neon`. These are unlayered CSS, so responsive `hidden` utilities go on a wrapper element, not on the button.
