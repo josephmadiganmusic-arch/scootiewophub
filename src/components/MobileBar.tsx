@@ -52,7 +52,7 @@ export function MobileBar({ live }: Props) {
             {live ? (
               <span className="absolute right-1 top-1 flex h-3 w-3" aria-hidden="true">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#ff3b3b] opacity-70" />
-                <span className="relative inline-flex h-3 w-3 rounded-full border-2 border-[#F2F4EA] bg-[#ff3b3b]" />
+                <span className="relative inline-flex h-3 w-3 rounded-full border-2 border-[#E6EED7] bg-[#ff3b3b]" />
               </span>
             ) : null}
           </a>

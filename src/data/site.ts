@@ -17,6 +17,9 @@ export const brand = {
   pillars: ["Music", "Fashion", "Lifestyle"],
   shopUrl: "https://starrbaby.co",
   liveUrl: "https://rolloutheaven.com/starrbaby",
+  // Scootie's creator referral: anyone who starts their own Rollout Live page
+  // through this link is credited to him.
+  referralUrl: "https://rolloutheaven.com/live?ref=scootiewop",
   // Public, CORS open live status on Rollout Heaven. The site polls it every
   // 30s and shows the live strip when it says live. VITE_LIVE_STATUS_URL overrides.
   liveStatusUrl:

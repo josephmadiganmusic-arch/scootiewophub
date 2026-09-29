@@ -1,5 +1,5 @@
-import { ArrowUpRight, CalendarDays, MapPin, Megaphone, Radio } from "lucide-react";
-import { events } from "@/data/site";
+import { ArrowUpRight, CalendarDays, MapPin, Megaphone, Radio, Sparkles } from "lucide-react";
+import { brand, events } from "@/data/site";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./SectionHeader";
 
@@ -85,7 +85,7 @@ export function News({ live: liveNow = false }: { live?: boolean }) {
                   </p>
                 </div>
                 {e.url ? (
-                  <div className="relative flex flex-wrap gap-3">
+                  <div className="relative flex flex-wrap items-center gap-3">
                     <a href={e.url} target="_blank" rel="noopener" className="btn3d-neon">
                       {liveNow ? "Watch live now" : (e.cta ?? "Watch")}
                       <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -96,6 +96,24 @@ export function News({ live: liveNow = false }: { live?: boolean }) {
                   </div>
                 ) : null}
               </article>
+              {/* Scootie's referral: start your own page through his link */}
+              <a
+                href={brand.referralUrl}
+                target="_blank"
+                rel="noopener"
+                className="neu-sm neu-lift mt-4 flex items-center gap-4 px-5 py-4"
+              >
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neon text-ink">
+                  <Sparkles className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="font-display block text-[0.8rem] font-bold uppercase leading-tight text-ink">
+                    Want your own Rollout Live page?
+                  </span>
+                  <span className="mt-1 block text-sm text-ink/65">Start it through Scootie&rsquo;s link.</span>
+                </span>
+                <ArrowUpRight className="h-5 w-5 shrink-0 text-neon-deep" aria-hidden="true" />
+              </a>
             </Reveal>
           ))}
 

@@ -37,7 +37,7 @@ export function Artists() {
                 />
                 <div
                   className="absolute inset-0 sm:hidden"
-                  style={{ background: "linear-gradient(180deg, rgba(237,236,227,0) 55%, rgba(237,236,227,1) 100%)" }}
+                  style={{ background: "linear-gradient(180deg, rgba(230,238,215,0) 55%, rgba(230,238,215,1) 100%)" }}
                   aria-hidden="true"
                 />
                 <span className="sticker absolute left-4 top-4 rotate-[-5deg]">Founder</span>

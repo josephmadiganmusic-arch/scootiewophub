@@ -6,7 +6,7 @@ import { brand } from "@/data/site";
 // Ramp for the tide, cream edition: cream at the low end, a pale green in
 // the middle, his neon at the peaks. Reads like the cream and green swirl
 // reference, kept inside his hue.
-const TIDE = ["#F4F5EC", "#CDF8BE", "#4CFF36"];
+const TIDE = ["#D9E6C2", "#6FC95A", "#12D200"];
 
 export function Hero() {
   const go = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -27,7 +27,7 @@ export function Hero() {
       {/* The tide */}
       <div
         className="absolute inset-0 -z-20"
-        style={{ background: "radial-gradient(70% 60% at 70% 45%, #CDF8BE 0%, #F2F4EA 70%)" }}
+        style={{ background: "radial-gradient(70% 60% at 70% 45%, #8FD97C 0%, #D9E6C2 70%)" }}
       >
         {tideReady ? (
           <div className="animate-in fade-in absolute inset-0 duration-700">
@@ -40,7 +40,7 @@ export function Hero() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(90deg, rgba(242,244,234,0.9) 0%, rgba(242,244,234,0.6) 42%, rgba(242,244,234,0.12) 100%), linear-gradient(180deg, rgba(242,244,234,0.5) 0%, rgba(242,244,234,0) 30%, rgba(242,244,234,0) 60%, #F2F4EA 100%)",
+            "linear-gradient(90deg, rgba(230,238,215,0.55) 0%, rgba(230,238,215,0.25) 40%, rgba(230,238,215,0) 70%), linear-gradient(180deg, rgba(230,238,215,0.2) 0%, rgba(230,238,215,0) 25%, rgba(230,238,215,0) 65%, #E6EED7 100%)",
         }}
         aria-hidden="true"
       />
@@ -89,7 +89,7 @@ export function Hero() {
             <div
               className="anim-pulse-ring absolute inset-[8%] rounded-full"
               style={{
-                background: "radial-gradient(circle at 35% 25%, #FFFFFF 0%, #F0F2E7 45%, #DDE3D2 100%)",
+                background: "radial-gradient(circle at 35% 25%, #FFFFFF 0%, #EEF4E2 45%, #CFDDB8 100%)",
                 border: "1px solid rgba(255,255,255,0.95)",
                 borderBottomColor: "rgba(52,72,36,0.14)",
               }}

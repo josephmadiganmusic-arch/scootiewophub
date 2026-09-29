@@ -51,9 +51,9 @@
   --font-display: "Drunk Wide", "Unbounded", "Unbounded Fallback", sans-serif;
   --font-sans: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  --color-background: #F2F4EA;
+  --color-background: #E6EED7;
   --color-foreground: #0B1A08;
-  --color-paper: #F2F4EA;
+  --color-paper: #E6EED7;
   --color-paper-2: #E6F6DC;
   --color-cream: #FBFAF4;
   --color-mint: #CDF8BE;
@@ -76,15 +76,15 @@
 }
 
 :root {
-  --background: #F2F4EA;
+  --background: #E6EED7;
   --foreground: #0B1A08;
   --ns-accent: #1AFE00;
   --neon: #1AFE00;
   --neon-hi: #7DFF6B;
   --neon-lo: #0FB500;
   --neon-deep: #0B7A00;
-  --neu-hi: #FDFCF7;
-  --neu-lo: #E9EBDF;
+  --neu-hi: #F6F8EF;
+  --neu-lo: #DCE6CA;
   --neu-edge: rgba(255, 255, 255, 0.95);
   --neu-light: rgba(255, 255, 255, 0.9);
   --neu-dark: rgba(52, 72, 36, 0.22);
@@ -103,7 +103,7 @@
     width: 100%;
   }
   body {
-    background: #F2F4EA;
+    background: #E6EED7;
     color: #0B1A08;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -269,7 +269,7 @@
 
 /* Inset wells: inputs */
 .neu-in {
-  background: linear-gradient(145deg, #E7E9DE 0%, #F7F8F1 100%);
+  background: linear-gradient(145deg, #DCE5CB 0%, #F1F5E8 100%);
   border: 1px solid rgba(52, 72, 36, 0.06);
   border-top-color: rgba(52, 72, 36, 0.14);
   border-bottom-color: rgba(255, 255, 255, 0.9);
@@ -352,7 +352,7 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #0B1A08;
-  background: linear-gradient(145deg, #FFFFFF 0%, #ECEEE3 100%);
+  background: linear-gradient(145deg, #FFFFFF 0%, #E9EFDC 100%);
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-top-color: rgba(255, 255, 255, 1);
   border-bottom-color: rgba(52, 72, 36, 0.16);
@@ -457,7 +457,7 @@
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 6px 8px 18px rgba(52,72,36,0.28), 0 0 26px -6px rgba(26,254,0,0.6);
 }
 .sticker-cream {
-  background: linear-gradient(145deg, #FFFFFF 0%, #ECEEE3 100%);
+  background: linear-gradient(145deg, #FFFFFF 0%, #E9EFDC 100%);
   border-color: rgba(255, 255, 255, 0.9);
   border-bottom-color: rgba(52, 72, 36, 0.16);
   box-shadow: inset 0 1px 0 #fff, 6px 8px 18px rgba(52,72,36,0.24);
@@ -552,13 +552,13 @@
 
 /* Phone tab bar, flush to the bottom edge */
 .tabbar {
-  background: linear-gradient(180deg, #FDFCF7 0%, #ECEEE3 100%);
+  background: linear-gradient(180deg, #F6F8EF 0%, #E9EFDC 100%);
   border-top: 1px solid rgba(255, 255, 255, 1);
   box-shadow: 0 -12px 30px -10px rgba(52, 72, 36, 0.3), inset 0 1px 0 #fff;
 }
 .tab-live {
   background: linear-gradient(180deg, var(--neon-hi) 0%, var(--neon) 50%, var(--neon-lo) 100%);
-  border: 3px solid #F2F4EA;
+  border: 3px solid #E6EED7;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     inset 0 -3px 0 rgba(0, 0, 0, 0.18),

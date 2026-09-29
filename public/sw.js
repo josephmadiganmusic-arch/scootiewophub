@@ -4,10 +4,10 @@
    handled and the live status poll on Rollout Heaven is never touched. A fetch
    handler is also what makes the site installable as an app. */
 
-const VERSION = "sb-1";
+const VERSION = "sb-2";
 const SHELL = "shell-" + VERSION;
 const MEDIA = "media-" + VERSION;
-const PRECACHE = ["/", "/manifest.webmanifest", "/brand/star-3d.webp", "/fonts/Unbounded-800-latin.woff2", "/fonts/Lato-400-latin.woff2"];
+const PRECACHE = ["/", "/manifest.json", "/brand/star-3d.webp", "/fonts/Unbounded-800-latin.woff2", "/fonts/Lato-400-latin.woff2"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
