@@ -29,8 +29,8 @@ export function Artists() {
                 <img
                   src={featured.image}
                   alt={featured.imageAlt}
-                  width={1365}
-                  height={2048}
+                  width={1070}
+                  height={1280}
                   loading="lazy"
                   decoding="async"
                   className="absolute inset-0 h-full w-full object-cover"

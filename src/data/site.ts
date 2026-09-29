@@ -145,8 +145,8 @@ export const artists: Artist[] = [
     name: "Scootie Wop",
     role: "Founder · Rapper · Producer",
     bio: "Emmanuel Lofton. Rapper, singer, songwriter, record producer and entrepreneur out of Hilton Head, South Carolina. Songwriting credits for Lecrae, production for a run of independent artists, and records like Coming Back Home and Spin Back that hit millions of streams in their first year.",
-    image: "/gallery/g02-golden-portrait-2.webp",
-    imageAlt: "Scootie Wop in golden light wearing a patterned shirt",
+    image: "/gallery/g09-red-curtain.webp",
+    imageAlt: "Scootie Wop seated on a grey couch in front of a red curtain, hand on his green LA cap",
     links: [
       { label: "Spotify", url: "https://open.spotify.com/artist/1JAoqu34UmPWUUAjLMXt5I" },
       { label: "Apple Music", url: "https://music.apple.com/us/artist/scootie-wop/1488283654" },
