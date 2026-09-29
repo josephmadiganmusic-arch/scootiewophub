@@ -160,6 +160,11 @@
     letter-spacing: -0.01em;
     text-transform: uppercase;
   }
+  @media (min-width: 768px) {
+    .hero-copy { container-type: inline-size; }
+    /* Size the wordmark to its grid column so it stays clear of the case. */
+    .hero-copy .text-display-hero { font-size: min(5.9rem, 12.5cqw); }
+  }
   .text-display-h2 {
     font-family: var(--font-display);
     font-weight: 800;

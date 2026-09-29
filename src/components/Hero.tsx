@@ -51,7 +51,7 @@ export function Hero() {
         style={{ paddingTop: "calc(7rem + var(--live-h, 0px))" }}
       >
         {/* Copy */}
-        <div className="min-w-0 md:col-span-7 lg:col-span-7">
+        <div className="hero-copy min-w-0 md:col-span-7 lg:col-span-7">
           <p className="eyebrow mb-5 flex flex-wrap items-center gap-x-3 gap-y-2">
             <span className="chip-neon">
               <span className="anim-blink inline-block h-1.5 w-1.5 rounded-full bg-neon" aria-hidden="true" />
