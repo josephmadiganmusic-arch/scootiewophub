@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { ArrowDown, Play, ShoppingBag } from "lucide-react";
 import ChromaTide from "@/components/ui/background-gradient-shader";
 import { brand } from "@/data/site";
@@ -8,6 +9,13 @@ const TIDE = ["#030603", "#0b7a02", "#1AFE00"];
 
 export function Hero() {
   const go = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  // The shader compiles after the first frame has painted, so the type and
+  // the star land first and the page never stalls on WebGL before showing.
+  const [tideReady, setTideReady] = useState(false);
+  useEffect(() => {
+    const id = window.requestAnimationFrame(() => window.requestAnimationFrame(() => setTideReady(true)));
+    return () => window.cancelAnimationFrame(id);
+  }, []);
 
   return (
     <section
@@ -16,8 +24,15 @@ export function Hero() {
       aria-label="STARRBABY WRLDWIDE"
     >
       {/* The tide */}
-      <div className="absolute inset-0 -z-20">
-        <ChromaTide colors={TIDE} speed={0.55} scale={0.9} className="absolute inset-0 h-full w-full" />
+      <div
+        className="absolute inset-0 -z-20"
+        style={{ background: "radial-gradient(70% 60% at 70% 45%, #0b3d05 0%, #050505 70%)" }}
+      >
+        {tideReady ? (
+          <div className="animate-in fade-in absolute inset-0 duration-700">
+            <ChromaTide colors={TIDE} speed={0.55} scale={0.9} className="absolute inset-0 h-full w-full" />
+          </div>
+        ) : null}
       </div>
       {/* Legibility: darken the left column and fade to the page black at the bottom */}
       <div
