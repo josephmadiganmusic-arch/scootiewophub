@@ -36,8 +36,9 @@ export function News({ live: liveNow = false }: { live?: boolean }) {
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
           {/* The weekly live, pinned */}
           {live.map((e) => (
-            <Reveal key={e.id} className="lg:col-span-7">
-              <article className="neu neu-neon relative flex h-full flex-col justify-between gap-8 overflow-hidden p-6 sm:p-8">
+            <Reveal key={e.id} className="flex flex-col lg:col-span-7">
+              {/* No h-full here: a stretched card inside a cell that also holds the referral link pushed the link out of the cell and under the next card on phones. */}
+              <article className="neu neu-neon relative flex flex-1 flex-col justify-between gap-8 overflow-hidden p-6 sm:p-8">
                 <img
                   src="/brand/starrwars-logo.webp"
                   alt=""

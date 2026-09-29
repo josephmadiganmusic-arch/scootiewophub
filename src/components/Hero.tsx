@@ -85,13 +85,14 @@ export function Hero() {
         {/* The 3D star on a raised plinth */}
         <div className="relative mx-auto w-full max-w-[22rem] md:col-span-5 md:max-w-none">
           <div className="relative mx-auto aspect-square w-[min(78vw,22rem)] md:w-full md:max-w-[26rem] lg:max-w-[30rem]">
-            {/* Plinth: a raised cream disc, lit from the top left */}
+            {/* Plinth: a black disc so the star's edge reads clean, lit from the top left */}
             <div
               className="anim-pulse-ring absolute inset-[8%] rounded-full"
               style={{
-                background: "radial-gradient(circle at 35% 25%, #FFFFFF 0%, #EEF4E2 45%, #CFDDB8 100%)",
-                border: "1px solid rgba(255,255,255,0.95)",
-                borderBottomColor: "rgba(52,72,36,0.14)",
+                background: "radial-gradient(circle at 35% 25%, #232a20 0%, #0b0f09 55%, #030403 100%)",
+                border: "1px solid rgba(255,255,255,0.14)",
+                borderBottomColor: "rgba(0,0,0,0.7)",
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12), 14px 18px 40px rgba(52,72,36,0.4)",
               }}
               aria-hidden="true"
             />
