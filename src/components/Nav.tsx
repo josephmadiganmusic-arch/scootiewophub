@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, ShoppingBag, X } from "lucide-react";
-import { brand, nav } from "@/data/site";
+import { nav } from "@/data/site";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { cn } from "@/lib/utils";
 
@@ -35,11 +35,16 @@ export function Nav() {
   };
 
   return (
-    <header className="fixed inset-x-0 z-50 transition-[top] duration-300" style={{ top: "var(--live-h, 0px)" }}>
+    // The header itself never takes a tap. Only the pill and the open sheet do,
+    // so the fixed box can never sit on top of buttons further down the page.
+    <header
+      className="pointer-events-none fixed inset-x-0 z-50 transition-[top] duration-300"
+      style={{ top: "var(--live-h, 0px)" }}
+    >
       <div className="container-x pt-3 sm:pt-4">
         <div
           className={cn(
-            "flex h-14 items-center justify-between gap-3 rounded-full px-3 pr-2 transition-[background-color,box-shadow,border-color] duration-300 sm:h-16 sm:px-4 sm:pr-2.5",
+            "pointer-events-auto flex h-14 items-center justify-between gap-3 rounded-full px-3 pr-2 transition-[background-color,box-shadow,border-color] duration-300 sm:h-16 sm:px-4 sm:pr-2.5",
             scrolled || open
               ? "neu-sm neu-round backdrop-blur-xl"
               : "border border-transparent bg-transparent",
@@ -96,10 +101,10 @@ export function Nav() {
           <div className="flex items-center gap-2">
             {/* Wrappers carry the responsive display: the raised button styles are unlayered and would beat a utility on the element itself. */}
             <span className="hidden sm:block">
-              <a href={brand.shopUrl} target="_blank" rel="noopener" className="btn3d-neon !min-h-11 !py-2.5">
+              <button type="button" onClick={() => go("products")} className="btn3d-neon !min-h-11 !py-2.5">
                 <ShoppingBag className="h-4 w-4" aria-hidden="true" />
                 Shop
-              </a>
+              </button>
             </span>
             <span className="block lg:hidden">
               <button
@@ -115,44 +120,40 @@ export function Nav() {
             </span>
           </div>
         </div>
-      </div>
 
-      {/* Mobile sheet */}
-      <div
-        id="mobile-nav"
-        className={cn(
-          "container-x lg:hidden transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]",
-          open ? "pointer-events-auto opacity-100 translate-y-0" : "pointer-events-none opacity-0 -translate-y-2",
-        )}
-        aria-hidden={!open}
-      >
-        <div className="neu mt-3 p-3">
-          <ul className="grid grid-cols-2 gap-2">
-            {nav.map((n) => (
-              <li key={n.id} className="min-w-0">
-                <button
-                  type="button"
-                  onClick={() => go(n.id)}
-                  tabIndex={open ? 0 : -1}
-                  className={cn("btn3d w-full !justify-start !px-4 !text-[0.7rem]", active === n.id && "is-on")}
-                >
-                  {n.label}
-                </button>
-              </li>
-            ))}
-            <li className="col-span-2">
-              <a
-                href={brand.shopUrl}
-                target="_blank"
-                rel="noopener"
-                tabIndex={open ? 0 : -1}
-                className="btn3d-neon w-full"
-              >
-                <ShoppingBag className="h-4 w-4" aria-hidden="true" />
-                Shop the drop
-              </a>
-            </li>
-          </ul>
+        {/* Mobile sheet: absolute under the pill so it never adds to the header's box */}
+        <div
+          id="mobile-nav"
+          className={cn(
+            "absolute inset-x-0 top-full lg:hidden transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]",
+            open ? "pointer-events-auto opacity-100 translate-y-0" : "pointer-events-none opacity-0 -translate-y-2",
+          )}
+          aria-hidden={!open}
+        >
+          <div className="container-x">
+            <div className="neu mt-3 p-3">
+              <ul className="grid grid-cols-2 gap-2">
+                {nav.map((n) => (
+                  <li key={n.id} className="min-w-0">
+                    <button
+                      type="button"
+                      onClick={() => go(n.id)}
+                      tabIndex={open ? 0 : -1}
+                      className={cn("btn3d w-full !justify-start !px-4 !text-[0.7rem]", active === n.id && "is-on")}
+                    >
+                      {n.label}
+                    </button>
+                  </li>
+                ))}
+                <li className="col-span-2">
+                  <button type="button" onClick={() => go("products")} tabIndex={open ? 0 : -1} className="btn3d-neon w-full">
+                    <ShoppingBag className="h-4 w-4" aria-hidden="true" />
+                    Shop the drop
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </header>

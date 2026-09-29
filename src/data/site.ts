@@ -22,8 +22,8 @@ export const brand = {
   liveStatusUrl:
     (import.meta.env.VITE_LIVE_STATUS_URL as string | undefined) ||
     "https://rolloutheaven.com/starrbaby/api/live-status",
-  // TODO: confirm the contact address for the mailto fallback on the sign up form.
-  contactEmail: "",
+  // Contact address. The sign up form mails here until a list endpoint is set.
+  contactEmail: "starrbabywrldwide@gmail.com",
   // Optional: a POST endpoint (Formspree, Resend, n8n webhook) that accepts
   // { email, source }. Set VITE_SIGNUP_ENDPOINT in .env to wire it up.
   signupEndpoint: import.meta.env.VITE_SIGNUP_ENDPOINT as string | undefined,

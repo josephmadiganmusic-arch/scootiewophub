@@ -7,12 +7,16 @@
    Display: Drunk Wide. Body: Lato.
    ------------------------------------------------------------------ */
 
-/* Drunk Wide is a licensed font. Drop the purchased files in /public/fonts
-   as DrunkWide.woff2 (and .woff) and this face lights up. Until then the
-   stack falls through to Unbounded, the closest open wide grotesque. */
+/* The display face is Druk Wide (Commercial Type), a licensed font. Drop the
+   licensed web files in /public/fonts under any of these names and the face
+   lights up. Until then the stack falls through to Unbounded, the closest
+   open wide grotesque. */
 @font-face {
   font-family: "Drunk Wide";
-  src: url("/fonts/DrunkWide.woff2") format("woff2"),
+  src: url("/fonts/DrukWide-Bold.woff2") format("woff2"),
+       url("/fonts/DrukWide-Bold.woff") format("woff"),
+       url("/fonts/DrukWide-Heavy.woff2") format("woff2"),
+       url("/fonts/DrunkWide.woff2") format("woff2"),
        url("/fonts/DrunkWide.woff") format("woff");
   font-weight: 400 900;
   font-style: normal;

@@ -69,11 +69,19 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <a href={brand.shopUrl} target="_blank" rel="noopener" className="btn3d-neon w-full !min-h-[3.1rem]">
+                <button type="button" onClick={() => go("products")} className="btn3d-neon w-full !min-h-[3.1rem]">
                   Shop
-                </a>
+                </button>
               </li>
             </ul>
+            {brand.contactEmail ? (
+              <p className="mt-5 text-sm text-white/55">
+                <span className="eyebrow !text-white/45 block">Contact</span>
+                <a href={`mailto:${brand.contactEmail}`} className="mt-1 inline-block text-white/80 transition-colors hover:text-neon">
+                  {brand.contactEmail}
+                </a>
+              </p>
+            ) : null}
           </div>
         </div>
 

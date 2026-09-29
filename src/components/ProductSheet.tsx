@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Minus, Plus, ShoppingBag, X } from "lucide-react";
+import { Minus, Plus, ShoppingBag, X } from "lucide-react";
 import { SIZES, addToBagUrl, buyNowUrl, money, productUrl, type ShopProduct, type Size } from "@/data/shop";
 import { cn } from "@/lib/utils";
 
@@ -78,14 +78,9 @@ export function ProductSheet({ product, onClose }: Props) {
           <span className="sm:hidden" aria-hidden="true">
             <span className="block h-1.5 w-10 rounded-full bg-black/15" />
           </span>
-          <a
-            href={productUrl(product)}
-            target="_blank"
-            rel="noopener"
-            className="hidden items-center gap-1.5 text-[0.66rem] font-extrabold uppercase tracking-[0.16em] text-ink/60 hover:text-ink sm:inline-flex"
-          >
-            View on the shop <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-          </a>
+          <span className="hidden text-[0.66rem] font-extrabold uppercase tracking-[0.16em] text-ink/50 sm:inline-flex">
+            STARRBABY shop
+          </span>
           <button
             ref={closeRef}
             type="button"

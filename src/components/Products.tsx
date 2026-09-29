@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
-import { ArrowRight, ArrowUpRight, Heart, LayoutGrid, Ruler, Search, Shirt, Sparkles, SwatchBook, Tag } from "lucide-react";
-import { SHOP_URL, money, shopProducts, showMerch, type ShopProduct } from "@/data/shop";
+import { ArrowRight, Heart, LayoutGrid, Ruler, Search, Shirt, Sparkles, SwatchBook, Tag } from "lucide-react";
+import { money, shopProducts, showMerch, type ShopProduct } from "@/data/shop";
 import { cn } from "@/lib/utils";
 import { ProductSheet } from "./ProductSheet";
 import { Reveal } from "./Reveal";
@@ -60,13 +60,7 @@ export function Products() {
               Apparel &amp; <span className="text-neon">show merch</span>
             </span>
           }
-          lead="Streetwear that pays homage to real life. Every size picked here goes straight to the STARRBABY cart."
-          aside={
-            <a href={SHOP_URL} target="_blank" rel="noopener" className="btn3d">
-              Open the shop
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-          }
+          lead="Streetwear that pays homage to real life. Pick a piece, pick a size, and it goes straight to the STARRBABY cart."
         />
 
         {/* The shop screen: neon ground, white cards, black feature card */}
@@ -273,15 +267,14 @@ export function Products() {
                           <h3 className="font-display mt-3 text-base font-extrabold uppercase leading-tight text-ink sm:text-xl">{m.name}</h3>
                           <p className="mt-2 text-sm leading-relaxed text-ink/65">{m.blurb}</p>
                         </div>
-                        <a
-                          href={m.url}
-                          target="_blank"
-                          rel="noopener"
+                        <button
+                          type="button"
+                          onClick={() => document.getElementById("signup")?.scrollIntoView({ behavior: "smooth" })}
                           className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-ink px-5 text-[0.7rem] font-extrabold uppercase tracking-[0.16em] text-white transition-transform duration-150 hover:-translate-y-0.5"
                         >
-                          See the drop
-                          <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                        </a>
+                          Hear about the next drop
+                          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        </button>
                       </div>
                     </article>
                   </Reveal>

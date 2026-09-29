@@ -3,7 +3,7 @@ import { ArrowUpRight, Check, Mail, Megaphone } from "lucide-react";
 import { brand, socials } from "@/data/site";
 import { Reveal } from "./Reveal";
 
-type Status = "idle" | "sending" | "done" | "error" | "handoff";
+type Status = "idle" | "sending" | "done" | "error" | "handoff" | "mail";
 
 const discord = socials.find((s) => s.key === "discord");
 
@@ -35,8 +35,10 @@ export function SignUp() {
       return;
     }
     if (brand.contactEmail) {
-      window.location.href = `mailto:${brand.contactEmail}?subject=${encodeURIComponent("Add me to the STARRBABY list")}&body=${encodeURIComponent(value)}`;
-      setStatus("done");
+      const subject = encodeURIComponent("Add me to the STARRBABY list");
+      const body = encodeURIComponent(`Add ${value} to the STARRBABY WRLDWIDE list.`);
+      window.location.href = `mailto:${brand.contactEmail}?subject=${subject}&body=${body}`;
+      setStatus("mail");
       return;
     }
     // No list endpoint wired yet: finish on the existing STARRBABY FAMILY page.
@@ -109,6 +111,10 @@ export function SignUp() {
                     ) : status === "done" ? (
                       <span className="flex items-center gap-1.5 text-neon">
                         <Check className="h-3.5 w-3.5" aria-hidden="true" /> You are on the list.
+                      </span>
+                    ) : status === "mail" ? (
+                      <span className="flex items-center gap-1.5 text-neon">
+                        <Check className="h-3.5 w-3.5" aria-hidden="true" /> Your mail app opened with the note ready. Hit send and you are on the list.
                       </span>
                     ) : status === "handoff" ? (
                       <span className="text-white/70">Finish signing up on the STARRBABY FAMILY page that just opened.</span>
