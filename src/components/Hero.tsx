@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowDown, Play, ShoppingBag } from "lucide-react";
+import { ArrowDown, ArrowUpRight, ShoppingBag } from "lucide-react";
 import ChromaTide from "@/components/ui/background-gradient-shader";
 import { brand } from "@/data/site";
 
@@ -71,13 +71,13 @@ export function Hero() {
             <span className="text-fg font-bold">{brand.tagline}.</span>
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <button type="button" className="btn3d-neon" onClick={() => go("products")}>
+            <button type="button" className="btn3d-neon" onClick={() => go("services")}>
+              Work with Scootie
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </button>
+            <button type="button" className="btn3d" onClick={() => go("products")}>
               <ShoppingBag className="h-4 w-4" aria-hidden="true" />
               Shop the drop
-            </button>
-            <button type="button" className="btn3d" onClick={() => go("music")}>
-              <Play className="h-4 w-4 fill-current" aria-hidden="true" />
-              Listen
             </button>
           </div>
         </div>
@@ -128,11 +128,11 @@ export function Hero() {
 
       <button
         type="button"
-        onClick={() => go("about")}
+        onClick={() => go("services")}
         className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-[0.7rem] font-black uppercase tracking-[0.3em] text-fg/50 transition-colors hover:text-neon md:flex"
-        aria-label="Scroll to the history of SB"
+        aria-label="Explore services with Scootie Wop"
       >
-        History of SB
+        Work with Scootie
         <ArrowDown className="anim-float-soft h-4 w-4" aria-hidden="true" />
       </button>
     </section>

@@ -10,6 +10,7 @@ import { Nav } from "@/components/Nav";
 import { News } from "@/components/News";
 import { Products } from "@/components/Products";
 import { SignUp } from "@/components/SignUp";
+import { Services } from "@/components/Services";
 import { useLiveStatus } from "@/hooks/useLiveStatus";
 
 export default function App() {
@@ -32,6 +33,7 @@ export default function App() {
       <Nav />
       <main id="main" className="relative pb-24 lg:pb-0">
         <Hero />
+        <Services />
         <About />
         <Products />
         <News live={status.live} />

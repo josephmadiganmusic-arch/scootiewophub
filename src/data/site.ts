@@ -145,7 +145,7 @@ export const artists: Artist[] = [
     name: "Scootie Wop",
     role: "Founder · Rapper · Producer",
     bio: "Emmanuel Lofton. Rapper, singer, songwriter, record producer and entrepreneur out of Hilton Head, South Carolina. Songwriting credits for Lecrae, production for a run of independent artists, and records like Coming Back Home and Spin Back that hit millions of streams in their first year.",
-    image: "/gallery/g09-red-curtain.webp",
+    image: "/gallery/scootie-seated.webp",
     imageAlt: "Scootie Wop seated on a grey couch in front of a red curtain, hand on his green LA cap",
     links: [
       { label: "Spotify", url: "https://open.spotify.com/artist/1JAoqu34UmPWUUAjLMXt5I" },
@@ -205,20 +205,18 @@ export const socials = [
 export type Photo = { src: string; thumb: string; alt: string; w: number; h: number };
 
 export const gallery: Photo[] = [
-  { src: "/gallery/g01-golden-portrait.webp", thumb: "/gallery/g01-golden-portrait-thumb.webp", alt: "Scootie Wop in a patterned shirt, golden window light", w: 1365, h: 2048 },
-  { src: "/gallery/g05-jersey-yard.webp", thumb: "/gallery/g05-jersey-yard-thumb.webp", alt: "Scootie Wop in a brown number 5 jersey in the yard", w: 1400, h: 2100 },
-  { src: "/gallery/g03-cap-portrait.webp", thumb: "/gallery/g03-cap-portrait-thumb.webp", alt: "Close portrait in a cap and brown jersey", w: 1400, h: 1400 },
-  { src: "/gallery/g08-studio-bw.webp", thumb: "/gallery/g08-studio-bw-thumb.webp", alt: "Black and white portrait on the couch with a cross chain", w: 1400, h: 1020 },
-  { src: "/gallery/g02-golden-portrait-2.webp", thumb: "/gallery/g02-golden-portrait-2-thumb.webp", alt: "Scootie Wop looking up, golden light", w: 1365, h: 2048 },
-  { src: "/gallery/g06-jersey-reach.webp", thumb: "/gallery/g06-jersey-reach-thumb.webp", alt: "Hand on the cap, brown jersey, blue sky", w: 1400, h: 2100 },
-  { src: "/gallery/g04-jersey-seated.webp", thumb: "/gallery/g04-jersey-seated-thumb.webp", alt: "Seated by the window blinds in the number 5 jersey", w: 1400, h: 2100 },
-  { src: "/gallery/g07-jersey-arms.webp", thumb: "/gallery/g07-jersey-arms-thumb.webp", alt: "Arms crossed in the yard, brown jersey", w: 1400, h: 2100 },
+  { src: "/gallery/scootie-microphone.webp", thumb: "/gallery/scootie-microphone-thumb.webp", alt: "Scootie Wop at a studio microphone in front of red curtains", w: 1600, h: 2000 },
+  { src: "/gallery/scootie-stage.webp", thumb: "/gallery/scootie-stage-thumb.webp", alt: "Scootie Wop performing in a black leather jacket and orange gloves", w: 1170, h: 1362 },
+  { src: "/gallery/scootie-portrait.webp", thumb: "/gallery/scootie-portrait-thumb.webp", alt: "Close portrait of Scootie Wop in a green cap in the studio", w: 1600, h: 2000 },
+  { src: "/gallery/scootie-performance.webp", thumb: "/gallery/scootie-performance-thumb.webp", alt: "Scootie Wop onstage, framed by the audience", w: 1600, h: 1066 },
+  { src: "/gallery/scootie-seated.webp", thumb: "/gallery/scootie-seated-thumb.webp", alt: "Scootie Wop seated on a grey couch in front of red curtains", w: 1600, h: 2000 },
+  { src: "/gallery/scootie-crowd.webp", thumb: "/gallery/scootie-crowd-thumb.webp", alt: "Scootie Wop performing among the crowd", w: 1170, h: 1250 },
 ];
 
 export const nav = [
+  { id: "services", label: "Services" },
   { id: "about", label: "About" },
   { id: "products", label: "Products" },
-  { id: "news", label: "News" },
   { id: "artists", label: "Artists" },
   { id: "music", label: "Music" },
   { id: "signup", label: "Sign Up" },

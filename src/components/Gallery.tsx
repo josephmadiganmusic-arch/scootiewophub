@@ -39,7 +39,7 @@ export function Gallery() {
               In the <span className="text-neon-outline">frame</span>
             </span>
           }
-          lead="Eight photos of Scootie. Tap one to open it."
+          lead="From the studio to the stage. Tap a photo to take a closer look."
         />
         <ul className="columns-2 gap-3 sm:gap-4 lg:columns-4" aria-label="Photos">
           {gallery.map((p, i) => (
