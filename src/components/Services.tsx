@@ -1,17 +1,22 @@
 import { ArrowUpRight, Check, Mail } from "lucide-react";
 import { brand } from "@/data/site";
+import { useConsultationAvailability } from "@/hooks/useConsultationAvailability";
 
 const checkoutBase = import.meta.env.VITE_SERVICES_URL || "https://rolloutheaven.com/starrbaby/services";
 
 const services = [
   { id: "feature", name: "Hooks & verses", price: "$500", unit: "one hook or one verse", bundlePrice: "$700", image: "scootie-microphone", position: "50% 39%", description: "Bring Scootie Wop onto your next record. Choose one part or get both together.", action: "Choose your feature", wide: true },
   { id: "collaboration", name: "Collaborations", price: "$1,000", unit: "per collaboration", image: "scootie-crowd", position: "50% 37%", description: "Make your next project a collaboration with Scootie.", action: "Start a collaboration", wide: true },
-  { id: "consultation", name: "1 on 1 consultation", price: "$100", unit: "per hour", image: "scootie-portrait", position: "50% 34%", description: "One hour with Scootie in his Rollout Heaven studio.", action: "Book a consultation" },
+  { id: "consultation", name: "One-on-one consultations", price: "See current price", unit: "on the booking page", image: "scootie-portrait", position: "50% 34%", description: "A one-on-one session with Scootie in his Rollout Heaven studio. Choose an available time before payment.", action: "Choose a time" },
   { id: "production", name: "Custom production", price: "$750", unit: "per production", image: "scootie-seated", position: "50% 37%", description: "Production for your next record. MP3, WAV and stems included.", action: "Start your production" },
   { id: "booking", name: "Show bookings", price: "Let’s talk", unit: "pricing to be confirmed", image: "scootie-stage", position: "50% 34%", description: "Bring Scootie to your stage. Share your date, location and event details.", action: "Inquire about a show" },
 ] as const;
 
 export function Services() {
+  const consultation = useConsultationAvailability(checkoutBase);
+  const available = consultation.data;
+  const nextDay = available?.days.find(day => day.slots.length > 0);
+  const consultationPrice = available ? new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 2 }).format(available.priceCents / 100) : consultation.status === "loading" ? "Checking availability" : "See current price";
   return (
     <section id="services" className="services-section relative" aria-labelledby="services-title">
       <div className="container-x">
@@ -43,9 +48,13 @@ export function Services() {
               <div className="service-body">
                 <h3 className="font-display">{service.name}</h3>
                 <p className="service-description">{service.description}</p>
-                <div className="service-price"><strong>{service.price}</strong><span>{service.unit}</span></div>
+                <div className="service-price"><strong>{service.id === "consultation" ? consultationPrice : service.price}</strong><span>{service.id === "consultation" && available ? `per ${available.minutes} minutes` : service.unit}</span></div>
+                {service.id === "consultation" && available && <div className="service-description" aria-live="polite">
+                  <p>{available.hoursLine}. All times are {available.tzLabel}.</p>
+                  <p>{nextDay ? `Next available: ${nextDay.date} at ${nextDay.slots[0].label} ${available.tzLabel}.` : "No open times in the next two months. Check back soon."}</p>
+                </div>}
                 {"bundlePrice" in service && <div className="service-bundle"><strong>{service.bundlePrice}</strong><span>hook + verse together</span></div>}
-                <a
+                {service.id === "consultation" && consultation.status === "closed" ? <p className="service-description" role="status">Bookings are paused.</p> : <a
                   className={service.id === "booking" ? "btn3d service-action" : "btn3d-neon service-action"}
                   href={service.id === "booking"
                     ? `mailto:${brand.contactEmail}?subject=${encodeURIComponent("Scootie Wop show booking")}&body=${encodeURIComponent("Event name:\nDate:\nCity and venue:\nBudget:\nContact name and phone:\n\nEvent details:\n")}`
@@ -53,14 +62,14 @@ export function Services() {
                 >
                   {service.action}
                   {service.id === "booking" ? <Mail size={17} aria-hidden="true" /> : <ArrowUpRight size={18} aria-hidden="true" />}
-                </a>
+                </a>}
               </div>
             </article>
           ))}
         </div>
         <div className="services-footnote">
           <span><Check size={16} aria-hidden="true" /> Service checkout through Rollout Heaven</span>
-          <p>All prices in USD. Pay upfront, then connect through Scootie's Rollout Heaven guest link.</p>
+          <p>All prices in USD. For one-on-one consultations, choose an available time before payment. Connect through Scootie's Rollout Heaven guest link.</p>
         </div>
       </div>
     </section>
